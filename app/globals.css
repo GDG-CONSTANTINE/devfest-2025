@@ -47,10 +47,16 @@
 .instrument-sans-regular {
   font-family: "Instrument Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-variation-settings: "wdth" 100;
+}
+.instrument-sans-small {
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings: "wdth" 10;
 }
 
 /* Hackathon font */
@@ -139,48 +145,79 @@
   }
 }
 
-html::-webkit-scrollbar {
-  display: none;
-  padding: 12px;
+
+
+.active {
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  font-family: "Instrument Sans", sans-serif;
 }
 
-.scrollbar-hidden {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+.active-dark {
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  font-family: "Instrument Sans", sans-serif;
+}
+
+.navbar-links a:hover {
+  color: gray;
+  transition: all 0.2s ease-in-out;
 }
 
 
-.hide-scroll::-webkit-scrollbar {
-  display: none;
+/* Hide scrollbar buttons (up/down arrows) - WebKit only */
+::-webkit-scrollbar-button {
+  display: none !important; /* Added !important for stronger enforcement */
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.hide-scroll {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+/* Base scrollbar dimensions */
+::-webkit-scrollbar {
+  width: 10px; /* Vertical width */
+  height: 4px; /* Horizontal height */
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  padding-top: 40px;
+  background: #f1f1f1; /* Light theme: Soft white-gray */
+  border-radius: 0; /* Square overall */
+}
+
+/* Thumb (moving part) - Square and theme-blended */
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1; /* Light: Neutral mid-gray (blends with white) */
+  border-radius: 0; /* Square edges */
+  border: 1px solid #f1f1f1; /* Subtle border for definition */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8; /* Light hover: Slightly darker gray */
+}
+
+/* Dark mode overrides */
+.dark ::-webkit-scrollbar-track {
+  background: #2a2a2a; /* Dark: Deep black-gray */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a4a4a; /* Dark: Muted dark-gray (blends with black) */
+  border: 1px solid #2a2a2a;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a; /* Dark hover: Lighter gray for contrast */
 }
 
 
-/* Default (Light theme) */
-.custom-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: #000 #fff;
-}
-
-.custom-scroll::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.custom-scroll::-webkit-scrollbar-track {
-  background: #fff; /* track white */
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background: #000; /* thumb black */
-  border-radius: 6px;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: #333; /* slightly lighter black on hover */
+.no-select-image {
+-webkit-touch-callout: none !important;
+-webkit-user-select: none !important;
+-webkit-user-drag: none !important;
+-khtml-user-select: none !important;
+-moz-user-select: none !important;
+-ms-user-select: none !important;
+user-select: none !important;
+pointer-events: none !important;
+cursor: default !important;
+  
 }

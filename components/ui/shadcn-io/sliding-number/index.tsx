@@ -11,8 +11,9 @@ import {
   type UseInViewOptions,
 } from 'motion/react';
 import useMeasure from 'react-use-measure';
+import { cn } from '@/lib/utils';
  
-import { cn } from '@repo/shadcn-ui/lib/utils';
+
  
 type SlidingNumberRollerProps = {
   prevValue: number;
