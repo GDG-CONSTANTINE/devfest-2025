@@ -25,7 +25,7 @@ export default function HeroSection() {
 
 
             {/* ------------- Hero Content Layer ----------------- */}
-            <div className="w-screen h-screen flex flex-col justify-center pt-12 items-center text-center no-select-image">
+            <div className="w-screen h-screen flex flex-col justify-center pt-18 items-center text-center no-select-image">
                 {/* -------- Title ---------- */}
                 <div className="instrument-sans-regular">
                     <h1 className="text-6xl font-semibold">DevFest</h1>

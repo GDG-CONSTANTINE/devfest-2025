@@ -145,7 +145,10 @@
   }
 }
 
+html{
+  scroll-behavior: smooth;
 
+}
 
 .active {
   font-weight: 600;

@@ -53,13 +53,13 @@ export default function NavBar() {
 
 
     return (
-        <div className="flex items-center justify-between pl-4 pt-2
-        absolute top-0 left-0 w-[99%] z-20 backdrop-blur-md bg-white/30 dark:bg-black/30">
+        <div className="flex items-center justify-between pl-4 pt-2 sticky
+        top-0 left-0 w-[99%] z-20 backdrop-blur-md bg-white/30 dark:bg-black/30">
             {/* ------------ logo ------ */}
             <div className="flex flex-row gap-1 items-center pb-1">
                 <GDGConstantineLogo fillColor={currentTheme} />
                 {/* --- Title --- */}
-                <div className="flex flex-col leading-tight">
+                <div className="flex flex-col leading-tight select-none">
                     <h3 className="font-semibold">
                         DevFest
                     </h3>
@@ -73,7 +73,7 @@ export default function NavBar() {
 
             {/* ------------ nav items ------ */}
             <nav className="flex gap-2 instrument-sans-regular text-lg relative overflow-hidden navbar-links 
-                transition-all duration-300">
+                transition-all duration-300 select-none">
                 <a 
                     href="#Home" 
                     className="relative py-2 px-3 text-sm font-medium text-gray-700 dark:text-gray-100 rounded-md active"
@@ -142,7 +142,7 @@ export default function NavBar() {
 
                 
             {/* -------- CTA ----------- */}
-            <FlipButton>
+            <FlipButton className="select-none">
                 <FlipButtonFront className="border border-gray-400 border-dashed 
                 bg-gray-50 dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600
                 font-medium instrument-sans-regular">
