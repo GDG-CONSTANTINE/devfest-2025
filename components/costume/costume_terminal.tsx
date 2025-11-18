@@ -1,81 +1,7 @@
 import { createNewHackathonMember } from '@/app/services/firebase_handler';
 import { HackathonEntry } from '@/Types/hackathon_entry';
 import React, { useState, useEffect, useImperativeHandle, forwardRef  } from 'react';
-
-interface FormFieldProps {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
-  type?: 'text' | 'email' | 'tel' | 'url' | 'select' | 'textarea';
-  readOnly: boolean;
-  options?: { value: string; label: string }[];
-  placeholder?: string;
-  multiline?: boolean;
-}
-
-const FormField: React.FC<FormFieldProps> = ({
-  label,
-  name,
-  value,
-  onChange,
-  type = 'text',
-  readOnly = false,
-  options,
-  placeholder,
-  multiline = false,
-}) => {
-  const baseClasses = 'flex-1 bg-gray-900 border-2 border-dashed border-gray-200/50 text-white px-3 py-1 ';
-  const selectClasses = `${baseClasses}`;
-  const inputClasses = multiline ? `${baseClasses} min-h-24 resize-none` : baseClasses;
-
-  const labelElement = (
-    <label className={`text-white w-48 ${multiline ? 'pt-1' : ''}`}>
-      {label}:
-    </label>
-  );
-
-  const inputElement = type === 'select' ? (
-    <select
-      name={name}
-      value={value}
-      onChange={onChange}
-      className={selectClasses}
-    >
-      {options?.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label || option.value}
-        </option>
-      ))}
-    </select>
-  ) : multiline ? (
-    <textarea
-      name={name}
-      value={value}
-      readOnly={readOnly}
-      onChange={onChange}
-      className={inputClasses}
-      placeholder={placeholder}
-    />
-  ) : (
-    <input
-      type={type}
-      name={name}
-      value={value}
-      readOnly={readOnly}
-      onChange={onChange}
-      className={inputClasses}
-      placeholder={placeholder}
-    />
-  );
-
-  return (
-    <div className={`flex flex-col md:flex-row ${multiline ? 'md:items-start' : 'md:items-center'} gap-8 items-start`}>
-      {labelElement}
-      {inputElement}
-    </div>
-  );
-};
+import FormField from './field_form';
 
 const AnimatedTerminal = forwardRef((props, ref) => {
   const [lines, setLines] = useState<{ text: string, color: string, delay: number }[]>([]);
@@ -89,6 +15,8 @@ const AnimatedTerminal = forwardRef((props, ref) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false)
   
+
+  // 
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
@@ -158,6 +86,8 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     }
   }, [currentChar, currentLine, lines]);
 
+
+  // 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -166,6 +96,8 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     setShowError(false);
   };
 
+
+  // 
   const validateForm = () => {
     const requiredFields = [
       'full_name',
@@ -194,15 +126,18 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     return true;
   };
 
+
   const handleSubmit = async () => {
     try {
       setIsLoading(true)
-    setWorkingOnEntry(true)
+      setWorkingOnEntry(true)
+      
     // handle error
     if (!validateForm()) {
       setShowError(true);
       return;
-    }
+      }
+      
     setShowError(false);
     console.log('Form submitted:', formData);
     // Handle form submission here
