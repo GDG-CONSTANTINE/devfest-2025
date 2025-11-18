@@ -18,7 +18,6 @@ export default function NavBar() {
 
 
     //* Manage the nav bar movement underline effect (desktop only)
-    //* Manage the nav bar movement underline effect (desktop only)
     useEffect(() => {
         // Small delay to ensure DOM is ready
         const initNavbar = () => {
@@ -112,7 +111,7 @@ export default function NavBar() {
         <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 sticky
         top-0 left-0 w-screen z-20 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
             {/* ------------ logo ------ */}
-            <div className="flex flex-row gap-1 items-center pb-1 py-3">
+            <div className="flex flex-row gap-1 items-center pb-0">
                 <div className="scale-75 md:scale-100">
                     <GDGConstantineLogo fillColor={currentTheme} />
                 </div>

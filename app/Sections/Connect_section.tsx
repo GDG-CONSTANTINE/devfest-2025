@@ -12,7 +12,7 @@ function SocialMediaItem({name, link}:{name:string, link:string}) {
     return (
         <Link href={link}
             target="_blank"
-            className="flex gap-2 items-center">
+            className="flex gap-2 items-center ">
             <Image
                 width={25}
                 height={25}

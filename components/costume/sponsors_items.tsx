@@ -48,7 +48,7 @@
                 ? "text-orange-600/50 dark:text-orange-400/50 border-orange-400/50" : "text-blue-600 dark:text-blue-400 border-blue-400"
     
     return (
-        <div className="group relative instrument-sans-regular">
+        <div className="group relative instrument-sans-regular ">
         {/* Decorative corner accent */}
         <div className={`absolute -top-1 -left-1 w-8 h-8  ${styles.accent} opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-300`}></div>
         <div className={`absolute -bottom-1 -right-1 w-8 h-8 ${styles.accent} opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-300`}></div>
@@ -64,10 +64,10 @@
             
             <div className="p-6">
             {/* Logo */}
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 no-select-image">
                 <div className={`w-32 h-16 flex items-center justify-center overflow-hidden`}>
                 {/* If using image: */}
-                <img src={sponsor.logo_path} alt={sponsor.name} className="w-full h-full object-contain p-2" />
+                <img src={sponsor.logo_path} alt={sponsor.name} className="w-full h-full object-contain p-2 " />
                 </div>
             </div>
             
