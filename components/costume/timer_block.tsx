@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { SlidingNumber } from "../ui/shadcn-io/sliding-number"
+import { TARGET_DATE } from "@/app/data/settings";
 
-const TARGET_DATE = new Date('2025-12-31T23:59:59'); // Change this to your specific target date/time
 
 function calculateTimeLeft(target: Date) {
   const now = new Date();

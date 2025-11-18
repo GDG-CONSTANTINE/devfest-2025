@@ -1,5 +1,4 @@
 "use client";
-
 import FloatingTip from "@/components/costume/floating_tip";
 import GalleryComponent from "@/components/costume/gallery";
 import { ArrowRight } from "lucide-react";
@@ -11,6 +10,8 @@ export default function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+
+  //
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;

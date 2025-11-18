@@ -1,101 +1,36 @@
 import ScheduleDisplayItem from "@/components/costume/schedule_display_item";
 import ScheduleItem from "@/Models/schedule_item";
-import Speaker from "@/Models/Speakers";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import SCHEDULE_ITEMS from "../data/schedule";
+import { DAYS } from "../data/settings";
 
 export default function ScheduleSection() {
-  const moc_schedule_data = [
-    new ScheduleItem(
-      "08:00",
-      "10:00",
-      11,
-      Date.now(),
-      "Starting off",
-      null,
-      "the opening day ceremony held in room number 67"
-    ),
-    new ScheduleItem("08:00", "10:00", 12, Date.now(), "Starting off", null),
-    new ScheduleItem("08:00", "10:00", 13, Date.now(), "Starting off", null),
-    new ScheduleItem(
-      "10:00",
-      "11:00",
-      12,
-      Date.now(),
-      "Doing something about some topic in the middle of some time in somewhere",
-      new Speaker(
-        "John Doe",
-        "place_holder_2.jpg",
-        "",
-        "https://linkedin.com/in/johndoe",
-        "http://github/",
-        "",
-        "",
-        "John is a software engineer with 10 years of experience."
-      ),
-      "The test to check if the full of details cells look well if not fuck"
-    ),
-    new ScheduleItem(
-      "11:00",
-      "12:00",
-      12,
-      Date.now(),
-      "Doing something about some topic in the middle of some time in somewhere",
-      new Speaker(
-        "John Doe",
-        "place_holder_4.jpg",
-        "",
-        "https://linkedin.com/in/johndoe",
-        "http://github/",
-        "",
-        "",
-        "John is a software engineer with 10 years of experience."
-      )
-    ),
-    new ScheduleItem(
-      "13:00",
-      "14:00",
-      13,
-      Date.now(),
-      "Doing something about some topic in the middle of some time in somewhere",
-      new Speaker(
-        "John Doe",
-        "place_holder_4.jpg",
-        "",
-        "https://linkedin.com/in/johndoe",
-        "http://github/",
-        "",
-        "",
-        "John is a software engineer with 10 years of experience."
-      )
-    ),
-  ];
-
   // Organize items by time slots
   const timeSlots = new Map<
     string,
     {
       start: string;
       end: string;
-      day11?: ScheduleItem;
-      day12?: ScheduleItem;
-      day13?: ScheduleItem;
+      day_one?: ScheduleItem;
+      day_two?: ScheduleItem;
+      day_three?: ScheduleItem;
     }
   >();
 
-  moc_schedule_data.forEach((item) => {
+  SCHEDULE_ITEMS.forEach((item) => {
     const key = `${item.start_time}-${item.end_time}`;
     if (!timeSlots.has(key)) {
       timeSlots.set(key, { start: item.start_time, end: item.end_time });
     }
     const slot = timeSlots.get(key)!;
 
-    if (item.day_number === 11) slot.day11 = item;
-    else if (item.day_number === 12) slot.day12 = item;
-    else if (item.day_number === 13) slot.day13 = item;
+    if (item.day_number === DAYS[0]) slot.day_one = item;
+    else if (item.day_number === DAYS[1]) slot.day_two = item;
+    else if (item.day_number === DAYS[2]) slot.day_three = item;
   });
 
-  const [currentDay, setCurrentDay] = useState(11);
+  const [currentDay, setCurrentDay] = useState(DAYS[0]);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -106,15 +41,15 @@ export default function ScheduleSection() {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  const days = [11, 12, 13];
-  const currentIndex = days.indexOf(currentDay);
+  
+  const currentIndex = DAYS.indexOf(currentDay);
 
   const goToPrevDay = () => {
-    setCurrentDay(days[(currentIndex + 2) % 3]);
+    setCurrentDay(DAYS[(currentIndex + 2) % 3]);
   };
 
   const goToNextDay = () => {
-    setCurrentDay(days[(currentIndex + 1) % 3]);
+    setCurrentDay(DAYS[(currentIndex + 1) % 3]);
   };
 
   return (
@@ -160,13 +95,13 @@ export default function ScheduleSection() {
             {!isMobile ? (
               <>
                 <th className="text-lg font-semibold pb-4 text-center">
-                  December 11
+                  December {DAYS[0]}
                 </th>
                 <th className="text-lg font-semibold pb-4 text-center">
-                  December 12
+                  December {DAYS[1]}
                 </th>
                 <th className="text-lg font-semibold pb-4 text-center">
-                  December 13
+                  December {DAYS[3]}
                 </th>
               </>
             ) : (
@@ -183,9 +118,9 @@ export default function ScheduleSection() {
               time_slot={`${slot.start}-${slot.end}`}
               start_time={slot.start}
               end_time={slot.end}
-              day11_item={slot.day11}
-              day12_item={slot.day12}
-              day13_item={slot.day13}
+              day11_item={slot.day_one}
+              day12_item={slot.day_two}
+              day13_item={slot.day_three}
               current_date={Date.now()}
               isSingleDay={isMobile}
               singleDay={isMobile ? currentDay : undefined}

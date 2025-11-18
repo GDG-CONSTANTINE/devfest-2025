@@ -1,145 +1,10 @@
-import SpeakerComponent from "@/components/costume/speaker_component";
 import SpeakerCarousel from "@/components/costume/speakers_carousel";
-import Speaker from "@/Models/Speakers";
 import { ArrowRight } from "lucide-react";
+import SPEAKERS from "../data/speakers";
 
 
 
 export default function SpeakersSection() {
-    const speakers = [
-        new Speaker(
-                    "John Doe",
-                    "place_holder.jpg",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "",
-                    "",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_2.jpg",
-                    "",
-                    "",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_3.jpg",
-                    "",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_4.jpg",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_2.jpg",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder.jpg",
-                    "",
-                    "",
-                    "http://github/",
-                    "https://linkedin.com/in/johndoe",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder.jpg",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "",
-                    "",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_2.jpg",
-                    "",
-                    "",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_3.jpg",
-                    "",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_4.jpg",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder_2.jpg",
-                    "",
-                    "https://linkedin.com/in/johndoe",
-                    "http://github/",
-                    "",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-        new Speaker(
-                    "John Doe",
-                    "place_holder.jpg",
-                    "",
-                    "",
-                    "http://github/",
-                    "https://linkedin.com/in/johndoe",
-                    "",
-                    "John is a software engineer with 10 years of experience."
-                    
-                ),
-    ]
     return (
         <section
             id="Speakers"
@@ -162,7 +27,7 @@ export default function SpeakersSection() {
 
 
             {/* speakers list display */}
-            <SpeakerCarousel speakers={speakers} />
+            <SpeakerCarousel speakers={SPEAKERS} />
         </section>
     )
 }

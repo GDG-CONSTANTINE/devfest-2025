@@ -1,23 +1,12 @@
-    import SponsorItem from "@/components/costume/sponsors_items";
-    import Sponsor from "@/Models/sponsors";
-    import { ArrowRight, Hash } from "lucide-react";
-    import { useTheme } from "next-themes";
+import SponsorItem from "@/components/costume/sponsors_items";
+import { ArrowRight, Hash } from "lucide-react";
+import { useTheme } from "next-themes";
+import SPONSORS_AND_PARTNERS from "../data/sponsors";
 
 
 
     export default function SponsorsSection() {
         const { theme } = useTheme()
-        const SPONSORS_LOGOS_ROOT = "/logo/"
-        const sponsors_and_partners = [
-            new Sponsor("/logo/google.svg","partner","www.google.com", 'Google','test the situation you want to see how the text display',"","something"),
-            new Sponsor("/logo/google.svg","partner","www.google.com", 'Google','test the situation you want to see how the text display',"","something"),
-            new Sponsor("/logo/google.svg","gold",'Test','test the situation you',"/","",""),
-            new Sponsor("/logo/socode.svg","gold",'Test','test the situation you',"/","",""),
-            new Sponsor("/logo/socode.svg","silver",'Test','test the situation you',"/","",""),
-            new Sponsor("/logo/google.svg","bronze",'Test','test the situation you',"", "something",""),
-        ]
-
-
         return (
             <section
                 className="w-screen"
@@ -37,7 +26,7 @@
 
                 {/* Partners */}
                 <div className="w-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 px-12 py-8">
-                    {sponsors_and_partners.map((partner, index) =>{
+                    {SPONSORS_AND_PARTNERS.map((partner, index) =>{
                         return <SponsorItem sponsor={partner} darkMode={theme === 'dark'} key={index} />
                     })}
                 </div>                
