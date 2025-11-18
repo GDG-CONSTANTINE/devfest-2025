@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/costume/navbar";
 import { ThemeProvider } from "next-themes";
+import Footer from "@/components/costume/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,14 +42,19 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap"
           rel="stylesheet"
         ></link>
+        {/* Tittles Font */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"></link>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased no-scrollbar`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased no-scrollbar overflow-x-hidden`}
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <main>
             <NavBar />
             {children}
+            <Footer />
           </main>
         </ThemeProvider>
       </body>
