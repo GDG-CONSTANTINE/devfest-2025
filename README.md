@@ -132,5 +132,6 @@ SMTP_PASS=your-app-password
 
 
 *Built by GDG Constantine. Powered by Next.js & Firebase.*  
-*Last Updated: November 18, 2025*
-*Sig:[Taha Necib](https://github.com/TahaNacibe)*
+*Last Updated: November 18, 2025.*
+*Design: [Taha Necib - devfest_2025 - (initial design changed in code)](https://www.figma.com/design/tD9XjaeTyCWepWd5CL50yN/Untitled?node-id=0-1&t=p4D4F8gwIIlmOLDj-1).*
+*Sig: [Taha Necib](https://github.com/TahaNacibe).*
