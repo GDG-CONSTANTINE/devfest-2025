@@ -1,9 +1,9 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, RefObject } from 'react';
 import Image from 'next/image';
 
 // Simple hook to detect if element is in view
-function useInView(ref, threshold = 0.2) {
+function useInView(ref : RefObject<null>, threshold = 0.2) {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
