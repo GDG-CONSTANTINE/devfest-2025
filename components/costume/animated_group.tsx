@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, RefObject } from 'react';
 import Image from 'next/image';
 
 // Simple hook to detect if element is in view
-function useInView(ref : RefObject<null>, threshold = 0.2) {
+function useInView(ref: RefObject<null>, threshold = 0.2) {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
@@ -26,81 +26,79 @@ export default function AnimatedStickersSection() {
   const inView = useInView(sectionRef);
   const [isAnimating, setIsAnimating] = useState(false);
 
-    const STICKERS_ROOT = "/stickers/"
-    
-  useEffect(() => {
-    if (inView && !isAnimating) {
-      setIsAnimating(true); // Trigger once
-    }
-  }, [inView, isAnimating]);
+  const STICKERS_ROOT = "/stickers/"
+
+  if (inView && !isAnimating) {
+    setIsAnimating(true);
+  }
 
   return (
     <div ref={sectionRef} className="relative w-1/3 h-[800px]"> {/* Add height for scroll space; adjust */}
       {/* Upper images */}
       <div className="flex items-end relative h-64">
-        <Image 
+        <Image
           className={`
             absolute -rotate-60 left-10 translate-y-[-50vh] opacity-0 transition-all duration-1000 ease-out
             ${isAnimating ? 'animate-fall delay-400' : ''} /* Stagger: 400ms */
-          `} 
-          src={`${STICKERS_ROOT}bar_side.png`} 
-          width={60} 
-          height={10} 
-          alt="Bar side sticker" 
+          `}
+          src={`${STICKERS_ROOT}bar_side.png`}
+          width={60}
+          height={10}
+          alt="Bar side sticker"
         />
-        <Image 
+        <Image
           className={`
             w-42 h-24 -rotate-30 absolute left-20 translate-y-[-50vh] opacity-0 transition-all duration-1000 ease-out
             ${isAnimating ? 'animate-fall delay-500' : ''} /* 500ms */
-          `} 
-          src={`${STICKERS_ROOT}arrow_sticker.png`} 
-          width={42} 
-          height={24} 
-          alt="Arrow sticker" 
+          `}
+          src={`${STICKERS_ROOT}arrow_sticker.png`}
+          width={42}
+          height={24}
+          alt="Arrow sticker"
         />
-        <Image 
+        <Image
           className={`
             w-28 h-32 -rotate-80 absolute left-53 translate-y-[-50vh] opacity-0 transition-all duration-1000 ease-out
             ${isAnimating ? 'animate-fall delay-600' : ''} /* 600ms */
-          `} 
-          src={`${STICKERS_ROOT}bigger_then.png`} 
-          width={28} 
-          height={32} 
-          alt="Bigger than sticker" 
+          `}
+          src={`${STICKERS_ROOT}bigger_then.png`}
+          width={28}
+          height={32}
+          alt="Bigger than sticker"
         />
       </div>
-      
+
       {/* Lower images */}
       <div className="flex items-end relative h-64 mt-8">
-        <Image 
+        <Image
           className={`
             absolute left-10 translate-y-[-50vh] opacity-0 transition-all duration-1000 ease-out
             ${isAnimating ? 'animate-fall delay-0' : ''} /* Starts immediately */
-          `} 
-          src={`${STICKERS_ROOT}three_dots.png`} 
-          width={230} 
-          height={230} 
-          alt="Three dots sticker" 
+          `}
+          src={`${STICKERS_ROOT}three_dots.png`}
+          width={230}
+          height={230}
+          alt="Three dots sticker"
         />
-        <Image 
+        <Image
           className={`
             rotate-48 pb-4 absolute left-67 translate-y-[-50vh] opacity-0 transition-all duration-1000 ease-out
             ${isAnimating ? 'animate-fall delay-200' : ''} /* 200ms */
-          `} 
-          src={`${STICKERS_ROOT}hashtag.png`} 
-          width={100} 
-          height={80} 
-          alt="Hashtag sticker" 
+          `}
+          src={`${STICKERS_ROOT}hashtag.png`}
+          width={100}
+          height={80}
+          alt="Hashtag sticker"
         />
-        <Image 
+        <Image
           className={`
             w-12 h-12 absolute left-91 translate-y-[-50vh] opacity-0 transition-all duration-1000 ease-out
             ${isAnimating ? 'animate-fall delay-300' : ''} /* 300ms */
-          `} 
-          src={`${STICKERS_ROOT}dot.png`} 
-          width={12} 
-          height={12} 
-          alt="Dot sticker" 
+          `}
+          src={`${STICKERS_ROOT}dot.png`}
+          width={12}
+          height={12}
+          alt="Dot sticker"
         />
       </div>
     </div>

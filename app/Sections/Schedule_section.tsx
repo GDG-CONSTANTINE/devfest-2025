@@ -32,16 +32,25 @@ export default function ScheduleSection() {
 
   const [currentDay, setCurrentDay] = useState(DAYS[0]);
   const [isMobile, setIsMobile] = useState(false);
+  const [now, setNow] = useState<number>(0);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setNow(Date.now());
+    const interval = setInterval(() => setNow(Date.now()), 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMobile(mediaQuery.matches);
     const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  
+
   const currentIndex = DAYS.indexOf(currentDay);
 
   const goToPrevDay = () => {
@@ -121,7 +130,7 @@ export default function ScheduleSection() {
               day11_item={slot.day_one}
               day12_item={slot.day_two}
               day13_item={slot.day_three}
-              current_date={Date.now()}
+              current_date={now}
               isSingleDay={isMobile}
               singleDay={isMobile ? currentDay : undefined}
             />

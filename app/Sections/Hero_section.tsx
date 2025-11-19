@@ -31,10 +31,10 @@ export default function HeroSection() {
                     <h1 className="text-6xl font-semibold">DevFest</h1>
                     <div className="flex flex-col">
                         <span className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl">
-                        Constantine
+                            Constantine
                         </span>
                         <span className="text-xs md:text-md">
-                        Season 2025 - Embrace the Future of Tech with Us!
+                            Season 2025 - Embrace the Future of Tech with Us!
                         </span>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ export default function HeroSection() {
                 {/* ---------- Timer Block ------------- */}
                 <div className="flex flex-col items-center pt-24">
                     <h1 className="instrument-sans-regular px-4 ">
-                        DevFest Start the <strong>11th of December 2025</strong> Don't Miss It!
+                        DevFest Start the <strong>11th of December 2025</strong> Don&apos;t Miss It!
                     </h1>
                     <TimerBlock />
                 </div>

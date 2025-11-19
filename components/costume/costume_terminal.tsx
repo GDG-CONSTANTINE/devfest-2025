@@ -1,7 +1,37 @@
 import { createNewHackathonMember } from '@/app/services/firebase_handler';
 import { HackathonEntry } from '@/Types/hackathon_entry';
-import React, { useState, useEffect, useImperativeHandle, forwardRef  } from 'react';
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import FormField from './field_form';
+
+const TYPING_DELAY = 20
+const terminalLines = [
+  { text: ">>  Loading Data Clusters.... (1/3)", color: "text-green-400", delay: TYPING_DELAY },
+  { text: ">>  Loading Data Clusters.... (2/3)", color: "text-green-400", delay: TYPING_DELAY },
+  { text: ">>  ERROR: Invalid Key - retrying...", color: "text-red-500", delay: TYPING_DELAY },
+  { text: ">>  ERROR: Access Denied", color: "text-red-500", delay: TYPING_DELAY },
+  { text: ">>  ERROR: Invalid Key - retrying...", color: "text-red-500", delay: TYPING_DELAY },
+  { text: ">>  ERROR: Access Denied", color: "text-red-500", delay: TYPING_DELAY },
+  { text: ">>  ERROR: Rebooting....", color: "text-red-500", delay: TYPING_DELAY },
+  { text: ">>  ALERT: A■■■■ G■■n■d", color: "text-yellow-500", delay: TYPING_DELAY },
+  { text: ">>  Loading Data Clusters.... (3/3)", color: "text-yellow-400", delay: TYPING_DELAY },
+  { text: ">>  MESSAGE: 'You've been invited to join the GDG Constantine 2025 Hackathon! Bring your team and prepare for an intense coding experience where collaboration meets competition. This is your chance to push technical boundaries, build something extraordinary, and compete alongside the brightest minds in our community. Work together to tackle challenging problems, learn from each other, and showcase what your team can accomplish. Whether you're seasoned developers or rising talents, this is your playground to innovate, experiment, and fight for the top spot.'", color: "text-white", delay: TYPING_DELAY },
+  { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
+  { text: ">>  OBJECTIVE: 'Complete a project within the time limit working alongside team members and pitch the work in front of judging members formed of top voices in the tech sector'", color: "text-white", delay: TYPING_DELAY },
+  { text: ">>  Loading Devfest Constantine 2025 Data Model.... (1/2) ", color: "text-green-400", delay: TYPING_DELAY },
+  { text: ">>  Loading Devfest Constantine 2025 Data Model.... (2/2) ", color: "text-green-400", delay: TYPING_DELAY },
+  { text: ">>  Hackathon_2025 = {", color: "text-cyan-400", delay: TYPING_DELAY },
+  { text: "     id: 'Hackathon_constantine_2025',", color: "text-white", delay: TYPING_DELAY },
+  { text: "     name: 'Hackathon 2025',", color: "text-white", delay: TYPING_DELAY },
+  { text: "     start_date: '2025-12-11',", color: "text-white", delay: TYPING_DELAY },
+  { text: "     end_date: '2025-12-14',", color: "text-white", delay: TYPING_DELAY },
+  { text: "     location: 'Hotel El-Khiam'", color: "text-white", delay: TYPING_DELAY },
+  { text: "  }", color: "text-cyan-400", delay: TYPING_DELAY },
+  { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
+  { text: ">>  Time Left Till Starting: 30d - 8h - 22m", color: "text-yellow-300", delay: TYPING_DELAY },
+  { text: ">>  NOTICE: Don't miss it", color: "text-white", delay: TYPING_DELAY },
+  { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
+  { text: ">>  ALERT: Creating new Hackathon Entry....", color: "text-green-400", delay: TYPING_DELAY },
+];
 
 const AnimatedTerminal = forwardRef((props, ref) => {
   const [lines, setLines] = useState<{ text: string, color: string, delay: number }[]>([]);
@@ -14,7 +44,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false)
-  
+
 
   // 
   const [formData, setFormData] = useState({
@@ -32,36 +62,6 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     why_participate: ''
   });
 
-  const TYPING_DELAY = 20
-  const terminalLines = [
-    { text: ">>  Loading Data Clusters.... (1/3)", color: "text-green-400", delay: TYPING_DELAY },
-    { text: ">>  Loading Data Clusters.... (2/3)", color: "text-green-400", delay: TYPING_DELAY },
-    { text: ">>  ERROR: Invalid Key - retrying...", color: "text-red-500", delay: TYPING_DELAY },
-    { text: ">>  ERROR: Access Denied", color: "text-red-500", delay: TYPING_DELAY },
-    { text: ">>  ERROR: Invalid Key - retrying...", color: "text-red-500", delay: TYPING_DELAY },
-    { text: ">>  ERROR: Access Denied", color: "text-red-500", delay: TYPING_DELAY },
-    { text: ">>  ERROR: Rebooting....", color: "text-red-500", delay: TYPING_DELAY },
-    { text: ">>  ALERT: A■■■■ G■■n■d", color: "text-yellow-500", delay: TYPING_DELAY },
-    { text: ">>  Loading Data Clusters.... (3/3)", color: "text-yellow-400", delay: TYPING_DELAY },
-    { text: ">>  MESSAGE: 'You've been invited to join the GDG Constantine 2025 Hackathon! Bring your team and prepare for an intense coding experience where collaboration meets competition. This is your chance to push technical boundaries, build something extraordinary, and compete alongside the brightest minds in our community. Work together to tackle challenging problems, learn from each other, and showcase what your team can accomplish. Whether you're seasoned developers or rising talents, this is your playground to innovate, experiment, and fight for the top spot.'", color: "text-white", delay: TYPING_DELAY },
-    { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
-    { text: ">>  OBJECTIVE: 'Complete a project within the time limit working alongside team members and pitch the work in front of judging members formed of top voices in the tech sector'", color: "text-white", delay: TYPING_DELAY },
-    { text: ">>  Loading Devfest Constantine 2025 Data Model.... (1/2) ", color: "text-green-400", delay: TYPING_DELAY },
-    { text: ">>  Loading Devfest Constantine 2025 Data Model.... (2/2) ", color: "text-green-400", delay: TYPING_DELAY },
-    { text: ">>  Hackathon_2025 = {", color: "text-cyan-400", delay: TYPING_DELAY },
-    { text: "     id: 'Hackathon_constantine_2025',", color: "text-white", delay: TYPING_DELAY },
-    { text: "     name: 'Hackathon 2025',", color: "text-white", delay: TYPING_DELAY },
-    { text: "     start_date: '2025-12-11',", color: "text-white", delay: TYPING_DELAY },
-    { text: "     end_date: '2025-12-14',", color: "text-white", delay: TYPING_DELAY },
-    { text: "     location: 'Hotel El-Khiam'", color: "text-white", delay: TYPING_DELAY },
-    { text: "  }", color: "text-cyan-400", delay: TYPING_DELAY },
-    { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
-    { text: ">>  Time Left Till Starting: 30d - 8h - 22m", color: "text-yellow-300", delay: TYPING_DELAY },
-    { text: ">>  NOTICE: Don't miss it", color: "text-white", delay: TYPING_DELAY },
-    { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
-    { text: ">>  ALERT: Creating new Hackathon Entry....", color: "text-green-400", delay: TYPING_DELAY },
-  ];
-
   useEffect(() => {
     if (currentLine >= terminalLines.length) {
       setShowForm(true);
@@ -78,13 +78,13 @@ const AnimatedTerminal = forwardRef((props, ref) => {
       return () => clearTimeout(timer);
     } else {
       const timer = setTimeout(() => {
-        setLines([...lines, currentLineData]);
+        setLines(prev => [...prev, currentLineData]);
         setCurrentLine(currentLine + 1);
         setCurrentChar(0);
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [currentChar, currentLine, lines]);
+  }, [currentChar, currentLine, standardDelay]);
 
 
   // 
@@ -131,25 +131,25 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     try {
       setIsLoading(true)
       setWorkingOnEntry(true)
-      
-    // handle error
-    if (!validateForm()) {
-      setShowError(true);
-      return;
+
+      // handle error
+      if (!validateForm()) {
+        setShowError(true);
+        return;
       }
-      
-    setShowError(false);
-    console.log('Form submitted:', formData);
-    // Handle form submission here
-    const res = await createNewHackathonMember((formData as HackathonEntry))
-    if (res && res.success) {
-      console.log(res.message)
-      setShowForm(false)
-      handleClear()
-      setMessage(res.data) 
-    } else {
-      setErrorMessage(res?.data)
-    }
+
+      setShowError(false);
+      console.log('Form submitted:', formData);
+      // Handle form submission here
+      const res = await createNewHackathonMember((formData as HackathonEntry))
+      if (res && res.success) {
+        console.log(res.message)
+        setShowForm(false)
+        handleClear()
+        setMessage(res.data as string)
+      } else {
+        setErrorMessage(res?.data as string)
+      }
     } catch (error) {
       console.log(error)
     } finally {
@@ -178,7 +178,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     triggerAction: handleSkipClicked
-  }),[])
+  }), [])
 
   const handleSkipClicked = () => {
     setStandardDelay(0)
@@ -206,7 +206,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
             <div className="text-cyan-400 mb-4">
               <span>{'>>  New_Entry = {'}</span>
             </div>
-            
+
             <div className="space-y-2 pl-6">
               <FormField
                 label="full_name"
@@ -389,7 +389,8 @@ const AnimatedTerminal = forwardRef((props, ref) => {
       </div>
     </div>
   );
-}) 
+})
 
+AnimatedTerminal.displayName = 'AnimatedTerminal';
 
 export default AnimatedTerminal
