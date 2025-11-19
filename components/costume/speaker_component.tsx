@@ -1,6 +1,6 @@
 "use client";
 import Speaker from "@/Models/Speakers";
-import { Facebook, Github, Linkedin, Megaphone, Music2, X } from "lucide-react";
+import { Facebook, Github, Link2, Linkedin, Megaphone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,10 +13,10 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
 
   const getAvailableSocials = () => {
     const socials = [];
-    if (speaker.linkedin_url) socials.push("linkedin");
-    if (speaker.github_url) socials.push("github");
-    if (speaker.twitter_url) socials.push("twiter");
-    if (speaker.facebook_url) socials.push("facebook");
+    if (speaker.linkedin_url) socials.push({name: "linkedin", url: speaker.linkedin_url});
+    if (speaker.github_url) socials.push({name: "github", url: speaker.github_url});
+    if (speaker.twitter_url) socials.push({name: "twiter", url: speaker.twitter_url});
+    if (speaker.facebook_url) socials.push({name: "facebook", url: speaker.facebook_url});
     return socials;
   };
 
@@ -26,7 +26,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
     <div className="p-8 flex flex-col items-center gap-4 hover:-translate-y-6 transition-all duration-300">
       <div
         id="card"
-        className="w-64 lg:w-full h-64 lg:h-48 cursor-pointer"
+        className="w-64 aspect-square 2xl:w-full lg:w-48 cursor-pointer"
         style={{ perspective: "1000px" }}
         onClick={() => setIsFlipped(!isFlipped)}
       >
@@ -51,7 +51,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
           >
             {socials.length > 0 ? (
               <a
-                href={socials[0]}
+                href={socials[0].url}
                 target={"_blank"}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -59,8 +59,8 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
                 className="absolute w-10 h-10 rounded-full overflow-hidden bg-white bottom-5 right-0"
               >
                 <Image
-                  src={`${ICONS_FOLDER_ROOT}${socials[0] || "default"}.png`}
-                  alt={`${socials[0]} icon`}
+                  src={`${ICONS_FOLDER_ROOT}${socials[0].name || "default"}.png`}
+                  alt={`${socials[0].name} icon`}
                   fill
                   className="object-cover scale-110"
                 />
@@ -101,7 +101,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
                   />
               </Link>
             )}
-            {speaker.github_url && (
+            {speaker.twitter_url && (
               <Link
                 target="_blank"
                 href={speaker.twitter_url}>
@@ -111,11 +111,21 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
                   />
               </Link>
             )}
-            {speaker.github_url && (
+            {speaker.facebook_url && (
               <Link
                 target="_blank"
                 href={speaker.facebook_url}>
                   <Facebook
+                    className="hover:mb-2 hover:scale-105 duration-200 transition-all"
+                    size={SOCIAL_MEDIA_ICON_SIZE}
+                  />
+              </Link>
+            )}
+            {speaker.portfolio && (
+              <Link
+                target="_blank"
+                href={speaker.portfolio}>
+                  <Link2
                     className="hover:mb-2 hover:scale-105 duration-200 transition-all"
                     size={SOCIAL_MEDIA_ICON_SIZE}
                   />
@@ -127,7 +137,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
 
       {/* Details */}
       <div className="flex flex-col items-center instrument-sans-regular">
-        <h1 className="pr-4 text-2xl">{speaker.full_name}</h1>
+        <h1 className="pr-4 text-2xl text-nowrap">{speaker.full_name}</h1>
         <p className="text-sm text-center dark:text-gray-300 text-gray-600">
           {speaker.bio}
         </p>

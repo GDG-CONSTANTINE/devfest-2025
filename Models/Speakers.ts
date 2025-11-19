@@ -7,6 +7,7 @@ export default class Speaker {
     twitter_url: string;
     facebook_url: string;
     tiktok_url: string;
+    portfolio: string;
     bio: string;
 
     constructor(full_name: string,
@@ -16,6 +17,7 @@ export default class Speaker {
     twitter_url: string,
     facebook_url: string,
     tiktok_url: string,
+    portfolio: string,
         bio: string) {
         this.full_name = full_name;
         this.pfp_path = pfp_path;
@@ -24,6 +26,7 @@ export default class Speaker {
         this.twitter_url = twitter_url;
         this.facebook_url = facebook_url;
         this.tiktok_url = tiktok_url;
+        this.portfolio = portfolio;
         this.bio = bio;
     }
 }

@@ -8,7 +8,7 @@ import { createNewAttendant } from "../services/firebase_handler";
 import { GDG_FORM_URL } from "../data/settings";
 
 
-function SocialMediaItem({name, link}:{name:string, link:string}) {
+function SocialMediaItem({ name, link }: { name: string, link: string }) {
     const LOGO_FOLDER_ROOT = "/icons/"
     return (
         <Link href={link}
@@ -49,13 +49,13 @@ export default function ConnectSection() {
     return (
         <section
             id="Connect"
-            className="w-screen min-h-screen pt-8"
+            className="w-screen pt-8"
         >
             {/* Title */}
             <div className="px-4 md:px-8 pt-10 pb-4 flex gap-2">
                 <ArrowRight size={30} />
                 <h1 className="flex flex-col instrument-sans-small">
-                    <span className="text-xl md:text-2xl dark:text-gray-300">It's time to</span>
+                    <span className="text-xl md:text-2xl dark:text-gray-300">It`s time to</span>
                     <span>
                         <span className="text-lg md:text-3xl"> Connect, </span>
                         <span className="text-xl md:text-2xl dark:text-gray-300"> right?</span>
@@ -66,12 +66,12 @@ export default function ConnectSection() {
 
             {/* call of action */}
             <p className="px-8 md:px-16 mt-2 text-sm md:text-medium instrument-sans-regular leading-8 dark:text-gray-300 text-gray-500">
-                Join the excitement at <strong>Devfest Constantine 2025</strong>—the ultimate gathering of innovators, creators, and tech enthusiasts in our vibrant city! Whether you're a seasoned developer, a curious student, or a team ready to hack the future, this event is your launchpad for collaboration, skill-building, and unforgettable moments. Sign up today and secure your spot at the biggest <strong>Tech</strong> festival of the year—spaces are filling fast, and you won't want to miss the talks, workshops, and hackathon that redefine what's possible. Let's connect, code, and create something extraordinary together!
+                Join the excitement at <strong>Devfest Constantine 2025</strong>—the ultimate gathering of innovators, creators, and tech enthusiasts in our vibrant city! Whether you`re a seasoned developer, a curious student, or a team ready to hack the future, this event is your launchpad for collaboration, skill-building, and unforgettable moments. Sign up today and secure your spot at the biggest <strong>Tech</strong> festival of the year—spaces are filling fast, and you won`t want to miss the talks, workshops, and hackathon that redefine what`s possible. Let`s connect, code, and create something extraordinary together!
             </p>
 
             {/* Join Now */}
             <div className="flex flex-col items-center gap-4 px-4 md:px-16 py-12 w-full">
-            <div className="flex flex-col md:flex-row gap-4 w-full md:w-fit">
+                {/* <div className="flex flex-col md:flex-row gap-4 w-full md:w-fit">
                 <Input
                 placeholder="Full Name"
                 value={fullName}
@@ -94,18 +94,21 @@ export default function ConnectSection() {
                 border-black/10 dark:border-gray-50/50 shadow-none
                 rounded-sm focus-visible:outline-none focus-visible:none focus-visible:none"
                 />
-            </div>
-                <LiquidButton
-                    disabled={emailAddress.trim().length == 0 || fullName.trim().length == 0 || loading}
-                    onClick={() => {
-                    handleAttendantsJoin()
-                }}    
-                className="w-full md:w-fit rounded-md 
-                border-2 border-dashed border-gray-50/30 px-8 py-3 text-base font-medium transition-all hover:shadow-lg">
-                    Join Now
-                {loading ? <LoaderCircle className="animate-spin" /> :
-                <ArrowRight className="ml-2 inline h-4 w-4" />}
-            </LiquidButton>
+            </div> */}
+                {/* <a href="" className=""> */}
+                    <LiquidButton
+                        // disabled={emailAddress.trim().length == 0 || fullName.trim().length == 0 || loading}
+                        disabled
+                        onClick={() => {
+                            handleAttendantsJoin()
+                        }}
+                        className="w-full md:w-fit rounded-md 
+                border-2 border-dashed border-gray-50/30 px-8 py-3 text-base font-medium transition-all hover:shadow-lg cursor-pointer">
+                        Join Now
+                        {loading ? <LoaderCircle className="animate-spin" /> :
+                            <ArrowRight className="ml-2 inline h-4 w-4" />}
+                    </LiquidButton>
+                {/* </a> */}
             </div>
 
 
@@ -140,11 +143,11 @@ export default function ConnectSection() {
                 {/* email */}
                 <div>
                     <h1 className="flex flex-col instrument-sans-small items-center justify-center">
-                    <span className="text-sm md:text-md dark:text-gray-300">Or just send us an</span>
-                    <span>
-                        <span className="text-md md:text-base"> Email </span>
-                        <span className="text-sm md:text-md dark:text-gray-300"> ?</span>
-                    </span>
+                        <span className="text-sm md:text-md dark:text-gray-300">Or just send us an</span>
+                        <span>
+                            <span className="text-md md:text-base"> Email </span>
+                            <span className="text-sm md:text-md dark:text-gray-300"> ?</span>
+                        </span>
                     </h1>
                     <Link href={"mailto:gdgconstantine.info@gmail.com"} type="email" className="text-sm mt-4 font-semibold">
                         gdgconstantine.info@gmail.com
