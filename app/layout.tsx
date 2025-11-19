@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'; // Add for types
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/costume/navbar";
 import { ThemeProvider } from "next-themes";
 import Footer from "@/components/costume/footer";
+import { metadata } from "./data/metadata"; // Your separate metadata file
+// import { SEO_CONFIG } from "./data/seo_data"; // Only if you need it here
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,11 +17,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "DevFest 2025",
-  description: "The biggest developer festival in Constantine.",
+// --------- SEO optimization ----------
+// Re-export for Next.js to inject site-wide
+export { metadata };
+
+// Optional: Viewport export for mobile
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
+// ----------- Layout ----------
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,24 +36,27 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
-        {/* whole page single font */}
+        {/* Consolidated preconnects for perf */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Instrument Sans */}
         <link
           href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
           rel="stylesheet"
-        ></link>
-        {/* Hackathon font*/}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        />
+        
+        {/* Jaro (Hackathon font) */}
         <link
           href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap"
           rel="stylesheet"
-        ></link>
-        {/* Tittles Font */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"></link>
+        />
+        
+        {/* Righteous (Titles) */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased no-scrollbar overflow-x-hidden`}
@@ -53,7 +64,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <main>
             <NavBar />
-            {children}
+            <div className="w-screen h-full">
+              {children}
+            </div>
             <Footer />
           </main>
         </ThemeProvider>

@@ -25,7 +25,7 @@ import SPONSORS_AND_PARTNERS from "../data/sponsors";
                 </div>
 
                 {/* Partners */}
-                <div className="w-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 px-12 py-8">
+                <div className="w-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-12 py-8">
                     {SPONSORS_AND_PARTNERS.map((partner, index) =>{
                         return <SponsorItem sponsor={partner} darkMode={theme === 'dark'} key={index} />
                     })}

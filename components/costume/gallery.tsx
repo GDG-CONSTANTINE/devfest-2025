@@ -26,13 +26,13 @@ export default function GalleryComponent() {
                                 src={`${GALLERY_ROOT_PATH}w_1.jpg`}
                                 width={GALLERY_WIDE_ENTRY_WIDTH}
                                 height={GALLERY_WIDE_ENTRY_HEIGHT}
-                                highlight={"Doing something together to reach automate future"}
+                                highlight={"From AI to cloud: Explore what's next."}
                             />
                             <GalleryItem 
-                                src={`${GALLERY_ROOT_PATH}w_2.png`}
+                                src={`${GALLERY_ROOT_PATH}w_2.jpg`}
                                 width={GALLERY_WIDE_ENTRY_WIDTH}
                                 height={GALLERY_WIDE_ENTRY_HEIGHT}
-                                highlight={"2"} 
+                                highlight={"Catch talks from top industry experts"} 
                             />
                         </div>
 
@@ -42,13 +42,13 @@ export default function GalleryComponent() {
                                 src={`${GALLERY_ROOT_PATH}c_1.jpg`}
                                 width={GALLERY_SQUARE_ENTRY_WIDTH}
                                 height={GALLERY_SQUARE_ENTRY_HEIGHT}
-                                highlight={"3"} 
+                                highlight={"Network with devs who inspire innovation."} 
                             />
                             <GalleryItem 
                                 src={`${GALLERY_ROOT_PATH}c_2.jpg`}
                                 width={GALLERY_SQUARE_ENTRY_WIDTH}
                                 height={GALLERY_SQUARE_ENTRY_HEIGHT}
-                                highlight={"4"} 
+                                highlight={"Build, connect, and celebrate tech."} 
                             />
                             
                             {/* Title square */}
@@ -72,7 +72,7 @@ export default function GalleryComponent() {
                         src={`${GALLERY_ROOT_PATH}p_1.jpg`}
                         width={GALLERY_PORTRAIT_ENTRY_WIDTH}
                         height={GALLERY_PORTRAIT_ENTRY_HEIGHT}
-                        highlight={"5"} 
+                        highlight={"Your annual spark for developer passion!"} 
                     />
                 </div>
 
@@ -82,19 +82,19 @@ export default function GalleryComponent() {
                         src={`${GALLERY_ROOT_PATH}w_3.jpg`}
                         width={GALLERY_WIDE_ENTRY_WIDTH}
                         height={GALLERY_WIDE_ENTRY_HEIGHT}
-                        highlight={"6"} 
+                        highlight={"Network with devs who inspire innovation."} 
                     />
                     <GalleryItem 
-                        src={`${GALLERY_ROOT_PATH}p_2.png`}
+                        src={`${GALLERY_ROOT_PATH}p_2.jpg`}
                         width={GALLERY_SQUARE_ENTRY_WIDTH}
                         height={GALLERY_SQUARE_ENTRY_HEIGHT}
-                        highlight={"7"} 
+                        highlight={"Fun, inclusive vibes for every coder."} 
                     />
                     <GalleryItem 
-                        src={`${GALLERY_ROOT_PATH}w_4.png`}
+                        src={`${GALLERY_ROOT_PATH}w_4.jpg`}
                         width={GALLERY_WIDE_ENTRY_WIDTH + GALLERY_PORTRAIT_ENTRY_WIDTH}
                         height={GALLERY_WIDE_ENTRY_HEIGHT}
-                        highlight={"8"} 
+                        highlight={"Fun, inclusive vibes for every coder."} 
                     />
                 </div>
             </div>
@@ -119,7 +119,7 @@ export default function GalleryComponent() {
                     responsive
                 />
                 <GalleryItem 
-                    src={`${GALLERY_ROOT_PATH}w_2.png`}
+                    src={`${GALLERY_ROOT_PATH}w_2.jpg`}
                     highlight={"2"}
                     responsive
                 />
@@ -139,7 +139,7 @@ export default function GalleryComponent() {
                     responsive
                 />
                 <GalleryItem 
-                    src={`${GALLERY_ROOT_PATH}w_4.png`}
+                    src={`${GALLERY_ROOT_PATH}w_4.jpg`}
                     highlight={"8"}
                     responsive
                     className="md:col-span-2"
@@ -183,10 +183,8 @@ function GalleryItem({
 
             {/* hover card */}
             <div className="dark:bg-black/70 bg-white/70 w-full h-full flex items-center justify-center z-10 absolute -bottom-full border-2 border-dashed border-gray-800 dark:border-gray-300 group-hover:bottom-0 transition-all duration-500 p-4 md:p-8">
-                <strong className="text-sm md:text-lg flex text-center items-center">
-                    <span className="text-3xl md:text-5xl">"</span>
-                    <span className="px-1 instrument-sans-regular">{highlight}</span>
-                    <span className="text-3xl md:text-5xl">"</span>
+                <strong className="text-sm md:text-lg flex text-center items-center instrument-sans-regular">
+                    {highlight}
                 </strong>
             </div>
         </div>

@@ -1,5 +1,4 @@
 import ScheduleItem from "@/Models/schedule_item";
-import { useState, useEffect } from "react";
 
 interface ScheduleDisplayItemInterface {
   time_slot: string;

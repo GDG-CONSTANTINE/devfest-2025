@@ -101,7 +101,7 @@ export default function ScheduleSection() {
                   December {DAYS[1]}
                 </th>
                 <th className="text-lg font-semibold pb-4 text-center">
-                  December {DAYS[3]}
+                  December {DAYS[2]}
                 </th>
               </>
             ) : (

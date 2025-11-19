@@ -1,5 +1,8 @@
-const TARGET_DATE = new Date('2025-12-31T23:59:59');
-const DAYS = [11, 12, 13];
+const TARGET_DATE = new Date('2025-12-13T07:59:59');
+const DAYS = [13, 14, 15];
+const DISPLAY_HACKATHON = false;
+const DISPLAY_SCHEDULE = false;
+const GDG_FORM_URL = ""
 
 
-export {TARGET_DATE, DAYS}
+export {TARGET_DATE, DAYS, DISPLAY_HACKATHON, DISPLAY_SCHEDULE, GDG_FORM_URL}

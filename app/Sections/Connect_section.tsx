@@ -1,10 +1,11 @@
 import { LiquidButton } from "@/components/animate-ui/components/buttons/liquid";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Hash, LoaderCircle } from "lucide-react";
+import { ArrowRight, Globe, Hash, LoaderCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { createNewAttendant } from "../services/firebase_handler";
+import { GDG_FORM_URL } from "../data/settings";
 
 
 function SocialMediaItem({name, link}:{name:string, link:string}) {
@@ -17,7 +18,7 @@ function SocialMediaItem({name, link}:{name:string, link:string}) {
                 width={25}
                 height={25}
                 src={`${LOGO_FOLDER_ROOT}${name}.png`} alt={name} />
-            <span>
+            <span className="font-semibold">
                 {name[0].toUpperCase() + name.substring(1, name.length)}
             </span>
         </Link>
@@ -27,7 +28,6 @@ function SocialMediaItem({name, link}:{name:string, link:string}) {
 
 
 export default function ConnectSection() {
-    const GDG_FORM_URL = "https://www.google.com"
     const [fullName, setFullName] = useState("")
     const [emailAddress, setEmailAddress] = useState("")
     const [loading, setIsLoading] = useState(false)
@@ -124,12 +124,18 @@ export default function ConnectSection() {
             <div className="flex flex-col md:flex-row md:pl-14 md:gap-24 items-center">
                 {/* social media */}
                 <div className="grid grid-cols-3 grid-rows-2 w-fit space-x-6 space-y-4 justify-end items-center pl-8 md:pl-auto">
-                    <SocialMediaItem name={"facebook"} link="" />
-                    <SocialMediaItem name={"tiktok"} link="" />
-                    <SocialMediaItem name={"linkedin"} link="" />
-                    <SocialMediaItem name={"twiter"} link="" />
-                    <SocialMediaItem name={"instagram"} link="" />
-                    <SocialMediaItem name={"youtube"} link="" />
+                    <SocialMediaItem name={"facebook"} link="https://www.facebook.com/GDGConstantine" />
+                    <SocialMediaItem name={"tiktok"} link="https://www.tiktok.com/@gdg.constantine" />
+                    <SocialMediaItem name={"linkedin"} link="https://www.linkedin.com/company/gdg-constantine/" />
+                    <Link href={"https://linktr.ee/gdgconstantine"}
+                        target="_blank"
+                        className="flex gap-2 items-center ">
+                        <Globe size={25} />
+                        <span className="font-semibold">
+                            Link Tree
+                        </span>
+                    </Link>
+                    <SocialMediaItem name={"instagram"} link="https://www.instagram.com/gdg_constantine/" />
                 </div>
                 {/* email */}
                 <div>
@@ -140,8 +146,8 @@ export default function ConnectSection() {
                         <span className="text-sm md:text-md dark:text-gray-300"> ?</span>
                     </span>
                     </h1>
-                    <Link href={"mailto:somethingEmail@gmail.com"} type="email" className="text-sm mt-4">
-                        somethingEmail@gmail.com
+                    <Link href={"mailto:gdgconstantine.info@gmail.com"} type="email" className="text-sm mt-4 font-semibold">
+                        gdgconstantine.info@gmail.com
                     </Link>
                 </div>
             </div>

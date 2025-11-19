@@ -7,6 +7,9 @@ import HeroSection from "./Sections/Hero_section";
 import ScheduleSection from "./Sections/Schedule_section";
 import SpeakersSection from "./Sections/Speakers_section";
 import SponsorsSection from "./Sections/Sponsors_section";
+import { DISPLAY_HACKATHON, DISPLAY_SCHEDULE } from './data/settings';
+import StayTunnedPlaceHolder from '@/components/costume/stay_tuned_place_holder';
+import { SEO_CONFIG } from './data/seo_data';
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -90,8 +93,11 @@ export default function Home() {
       <HeroSection/>
       <AboutSection/>
       <SpeakersSection/>
-      <ScheduleSection />
-      <HackathonSection />
+      {DISPLAY_SCHEDULE
+        ? <ScheduleSection />
+        : <StayTunnedPlaceHolder />}
+      {DISPLAY_HACKATHON
+        && <HackathonSection />}
       <SponsorsSection />
       <ConnectSection />
     </main>

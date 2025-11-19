@@ -90,6 +90,10 @@ export default function AboutSection() {
             professionals — will get an{" "}
             <FloatingTip>opportunity for personal and growth</FloatingTip>.
           </p>
+          <span className="text-base lg:text-lg font-bold mt-4">What is DevFest?</span>
+          <p className="mt-2">
+            We proudly host <FloatingTip>DevFest</FloatingTip>, an annual developer festival featuring hands-on workshops, inspiring talks, and networking sessions to dive deep into the latest Google technologies and innovations.
+          </p>
         </div>
 
         {/* --------------- falling imgs ------------------ */}

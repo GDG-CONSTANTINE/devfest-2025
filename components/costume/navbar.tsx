@@ -6,6 +6,7 @@ import { ThemeTogglerButton } from "../animate-ui/components/buttons/theme-toggl
 import GDGConstantineLogo from "@/public/logo/gdg_constantine_logo"
 import { useTheme } from "next-themes"
 import Link from "next/link"
+import { DISPLAY_HACKATHON } from "@/app/data/settings"
 
 export default function NavBar() {
     //* manage current theme for the logo
@@ -108,10 +109,10 @@ export default function NavBar() {
 
 
     return (
-        <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 sticky
-        top-0 left-0 w-screen z-20 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
+        <div className="flex items-center justify-between px-4 md:px-6 lg:px-4 sticky
+            top-0 left-0 z-50 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
             {/* ------------ logo ------ */}
-            <div className="flex flex-row gap-1 items-center pb-0">
+            <div className="flex flex-row gap-1 items-center py-3 md:py-0">
                 <div className="scale-75 md:scale-100">
                     <GDGConstantineLogo fillColor={currentTheme} />
                 </div>
@@ -155,12 +156,12 @@ export default function NavBar() {
                 >
                     Schedule
                 </a>
-                <a 
+                {DISPLAY_HACKATHON && <a 
                     href="#Hackathon" 
                     className="relative py-2 px-3 text-sm font-medium text-gray-700 dark:text-gray-100 rounded-md"
                 >
                     Hackathon
-                </a>
+                </a>}
                 <a 
                     href="#Sponsors" 
                     className="relative py-2 px-3 text-sm font-medium text-gray-700 dark:text-gray-100 rounded-md"
@@ -220,7 +221,7 @@ export default function NavBar() {
                 {/* -------- Mobile menu button ----------- */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="lg:hidden p-2 rounded-md border-2 border-gray-400 border-dashed 
+                    className="lg:hidden p-2 mr-2 rounded-md border-2 border-gray-400 border-dashed 
                     bg-gray-50 dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 shadow-none"
                     aria-label="Toggle menu"
                 >
@@ -275,13 +276,13 @@ export default function NavBar() {
                     >
                         Sponsors
                     </a>
-                    <a 
+                    {DISPLAY_HACKATHON && <a 
                         href="#Hackathon" 
                         onClick={handleMobileLinkClick}
                         className="py-3 px-4 text-sm font-medium text-gray-700 dark:text-gray-100 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                     >
                         Hackathon
-                    </a>
+                    </a>}
                     <a 
                         href="#Connect" 
                         onClick={handleMobileLinkClick}

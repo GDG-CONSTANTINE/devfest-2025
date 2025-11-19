@@ -65,9 +65,9 @@
             <div className="p-6">
             {/* Logo */}
             <div className="flex items-center justify-between mb-4 no-select-image">
-                <div className={`w-32 h-16 flex items-center justify-center overflow-hidden`}>
+                <div className={`w-32 h-25 flex items-center justify-center overflow-hidden`}>
                 {/* If using image: */}
-                <img src={sponsor.logo_path} alt={sponsor.name} className="w-full h-full object-contain p-2 " />
+                <img src={sponsor.logo_path} alt={sponsor.name} className="w-35 h-25 object-contain p-2 " />
                 </div>
             </div>
             
@@ -76,7 +76,7 @@
                 {sponsor.name}
             </h3>
                     <p className={`text-sm leading-relaxed mb-4 ${darkMode ? 'text-gray-400' : 'text-gray-600'} 
-            line-clamp-2 min-h-10`}>
+                min-h-10`}>
                 {sponsor.description}
             </p>
             
