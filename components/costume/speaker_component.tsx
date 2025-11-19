@@ -1,6 +1,6 @@
 "use client";
 import Speaker from "@/Models/Speakers";
-import { Facebook, Github, Linkedin, Megaphone, Music2, X } from "lucide-react";
+import { Facebook, Github, Linkedin, Megaphone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -15,7 +15,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
     const socials = [];
     if (speaker.linkedin_url) socials.push("linkedin");
     if (speaker.github_url) socials.push("github");
-    if (speaker.twitter_url) socials.push("twiter");
+    if (speaker.twitter_url) socials.push("twitter");
     if (speaker.facebook_url) socials.push("facebook");
     return socials;
   };
@@ -23,7 +23,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
   const socials = getAvailableSocials();
 
   return (
-    <div className="p-8 flex flex-col items-center gap-4 hover:-translate-y-6 transition-all duration-300">
+    <div className="p-8 flex flex-col items-center gap-4 hover:-translate-y-6 transition-all duration-300 group">
       <div
         id="card"
         className="w-64 lg:w-full h-64 lg:h-48 cursor-pointer"
@@ -82,9 +82,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
             }}
           >
             {speaker.linkedin_url && (
-              <Link
-                target="_blank"
-                href={speaker.linkedin_url}>
+              <Link target="_blank" href={speaker.linkedin_url}>
                 <Linkedin
                   className="hover:mb-2 hover:scale-105 duration-200 transition-all"
                   size={SOCIAL_MEDIA_ICON_SIZE}
@@ -92,33 +90,27 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
               </Link>
             )}
             {speaker.github_url && (
-              <Link
-                target="_blank"
-                href={speaker.github_url}>
-                  <Github
-                    className="hover:mb-2 hover:scale-105 duration-200 transition-all"
-                    size={SOCIAL_MEDIA_ICON_SIZE}
-                  />
+              <Link target="_blank" href={speaker.github_url}>
+                <Github
+                  className="hover:mb-2 hover:scale-105 duration-200 transition-all"
+                  size={SOCIAL_MEDIA_ICON_SIZE}
+                />
               </Link>
             )}
-            {speaker.github_url && (
-              <Link
-                target="_blank"
-                href={speaker.twitter_url}>
-                  <X
-                    className="hover:mb-2 hover:scale-105 duration-200 transition-all"
-                    size={SOCIAL_MEDIA_ICON_SIZE}
-                  />
+            {speaker.twitter_url && (
+              <Link target="_blank" href={speaker.twitter_url}>
+                <X
+                  className="hover:mb-2 hover:scale-105 duration-200 transition-all"
+                  size={SOCIAL_MEDIA_ICON_SIZE}
+                />
               </Link>
             )}
-            {speaker.github_url && (
-              <Link
-                target="_blank"
-                href={speaker.facebook_url}>
-                  <Facebook
-                    className="hover:mb-2 hover:scale-105 duration-200 transition-all"
-                    size={SOCIAL_MEDIA_ICON_SIZE}
-                  />
+            {speaker.facebook_url && (
+              <Link target="_blank" href={speaker.facebook_url}>
+                <Facebook
+                  className="hover:mb-2 hover:scale-105 duration-200 transition-all"
+                  size={SOCIAL_MEDIA_ICON_SIZE}
+                />
               </Link>
             )}
           </div>
@@ -126,9 +118,9 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
       </div>
 
       {/* Details */}
-      <div className="flex flex-col items-center instrument-sans-regular">
-        <h1 className="pr-4 text-2xl">{speaker.full_name}</h1>
-        <p className="text-sm text-center dark:text-gray-300 text-gray-600">
+      <div className="flex flex-col items-center instrument-sans-regular max-w-64 group/bio">
+        <h1 className="pr-4 text-xl text-center">{speaker.full_name}</h1>
+        <p className="text-xs text-center dark:text-gray-300 text-gray-600 line-clamp-2 group-hover/bio:line-clamp-none transition-all duration-300">
           {speaker.bio}
         </p>
       </div>

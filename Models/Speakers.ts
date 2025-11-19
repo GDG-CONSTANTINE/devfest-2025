@@ -2,20 +2,20 @@
 export default class Speaker {
     full_name: string;
     pfp_path: string;
-    linkedin_url: string;
-    github_url: string;
-    twitter_url: string;
-    facebook_url: string;
-    tiktok_url: string;
+    linkedin_url: string | null;
+    github_url: string | null;
+    twitter_url: string | null;
+    facebook_url: string | null;
+    tiktok_url: string | null;
     bio: string;
 
     constructor(full_name: string,
     pfp_path: string,
-    linkedin_url: string,
-    github_url: string,
-    twitter_url: string,
-    facebook_url: string,
-    tiktok_url: string,
+    linkedin_url: string | null,
+    github_url: string | null,
+    twitter_url: string | null,
+    facebook_url: string | null,
+    tiktok_url: string | null,
         bio: string) {
         this.full_name = full_name;
         this.pfp_path = pfp_path;
