@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import { SEO_CONFIG } from './seo_data';
 
-
 export const metadata: Metadata = {
   title: {
     default: SEO_CONFIG.title,
     template: '%s | GDG Constantine', // For sub-pages
+  },
+  icons: {
+    icon: '/logo/icon-logo.svg',
+    shortcut: '/logo/icon-logo.svg',
+    apple: '/logo/icon-logo.svg',
   },
   description: SEO_CONFIG.description,
   metadataBase: new URL(SEO_CONFIG.canonical),
@@ -36,8 +40,11 @@ export const metadata: Metadata = {
     },
   },
   // Keywords for better ranking
-  keywords: ['DevFest 2025', 'GDG Constantine', 'developer conference Algeria', 'Google tech workshops', 'AI cloud events'],
-    icons: {
-        icon: '/favicon.ico',
-    },
+  keywords: [
+    'DevFest 2025',
+    'GDG Constantine',
+    'developer conference Algeria',
+    'Google tech workshops',
+    'AI cloud events',
+  ],
 };
