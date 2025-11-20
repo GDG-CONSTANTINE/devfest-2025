@@ -1,6 +1,7 @@
 "use client"
 import FloatingStickers from "@/components/costume/stickers_layer";
 import TimerBlock from "@/components/costume/timer_block";
+import { DAYS } from "../data/settings";
 
 
 export default function HeroSection() {
@@ -28,21 +29,21 @@ export default function HeroSection() {
             <div className="w-screen h-screen flex flex-col justify-center pt-4 items-center text-center no-select-image">
                 {/* -------- Title ---------- */}
                 <div className="righteous-regular">
-                    <h1 className="text-6xl font-semibold">DevFest</h1>
+                    <h1 className="text-8xl font-semibold">DevFest</h1>
                     <div className="flex flex-col">
-                        <span className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl">
-                            Constantine
+                        <span className="text-gray-700 dark:text-gray-200 text-xl md:text-3xl">
+                            Constantine 2025
                         </span>
-                        <span className="text-xs md:text-md">
-                            Season 2025 - Embrace the Future of Tech with Us!
+                        <span className="text-xs md:text-lg">
+                            Embrace the Future of Tech with Us!
                         </span>
                     </div>
                 </div>
 
                 {/* ---------- Timer Block ------------- */}
                 <div className="flex flex-col items-center pt-24">
-                    <h1 className="instrument-sans-regular px-4 ">
-                        DevFest Start the <strong>11th of December 2025</strong> Don&apos;t Miss It!
+                    <h1 className="instrument-sans-regular px-4 text-lg">
+                        DevFest Start the <strong>{DAYS[0]}th of December 2025</strong> Don&apos;t Miss It!
                     </h1>
                     <TimerBlock />
                 </div>
