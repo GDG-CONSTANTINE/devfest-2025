@@ -95,20 +95,20 @@ export default function ConnectSection() {
                 rounded-sm focus-visible:outline-none focus-visible:none focus-visible:none"
                 />
             </div> */}
-                {/* <a href="" className=""> */}
+                <a href="#" className="">
                     <LiquidButton
                         // disabled={emailAddress.trim().length == 0 || fullName.trim().length == 0 || loading}
-                        disabled
-                        onClick={() => {
-                            handleAttendantsJoin()
-                        }}
+                        // disabled
+                        // onClick={() => {
+                            // handleAttendantsJoin()
+                        // }}
                         className="w-full md:w-fit rounded-md 
                 border-2 border-dashed border-gray-50/30 px-8 py-3 text-base font-medium transition-all hover:shadow-lg cursor-pointer">
                         Join Now
                         {loading ? <LoaderCircle className="animate-spin" /> :
                             <ArrowRight className="ml-2 inline h-4 w-4" />}
                     </LiquidButton>
-                {/* </a> */}
+                </a>
             </div>
 
 

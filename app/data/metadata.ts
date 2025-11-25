@@ -21,10 +21,13 @@ export const metadata: Metadata = {
     publishedTime: String(SEO_CONFIG.openGraph.publishedTime),
     authors: SEO_CONFIG.openGraph.authors,
   },
-  // Add Twitter if you have a handle (e.g., from socials)
+  // Twitter/X metadata
   twitter: {
     card: 'summary_large_image',
-    creator: '@GDGConstantine', // Add if available
+    site: '@GDGConstantine',
+    creator: '@GDGConstantine',
+    title: SEO_CONFIG.title,
+    description: SEO_CONFIG.description,
     images: [SEO_CONFIG.openGraph.images[0].url],
   },
   // Robots for SEO
@@ -39,12 +42,43 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Additional metadata for better SEO
+  category: 'Technology Conference',
+  authors: [{ name: 'GDG Constantine' }],
+  creator: 'GDG Constantine',
+  publisher: 'Google Developer Groups',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  // Verification tags (add when available)
+  verification: {
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+  },
   // Keywords for better ranking
   keywords: [
-    'DevFest 2025',
+    'DevFest Constantine 2025',
+    'DevFest Algeria',
     'GDG Constantine',
+    'Google Developer Conference Algeria',
+    'tech conference Constantine',
     'developer conference Algeria',
-    'Google tech workshops',
-    'AI cloud events',
+    'Google Developers Group',
+    'AI workshops Algeria',
+    'Cloud computing conference',
+    'web development workshops',
+    'mobile development Algeria',
+    'hackathon Constantine',
+    'tech events Algeria 2025',
+    'Hotel El-Khiam conference',
+    'Google technology events',
+    'developer community Algeria',
+    'Android development',
+    'Machine Learning workshops',
+    'Flutter development',
+    'Firebase workshops',
+    'tech networking Algeria',
   ],
 };

@@ -178,7 +178,7 @@ export default function AboutSection() {
           flex flex-col gap-2 items-center righteous-regular justify-center"
           >
             <Lightbulb size={30} />
-            Innovate
+            Connect
           </div>
           <div
             className="border-2 border-dashed dark:border-white border-gray-400 text-black dark:text-white rounded-md w-32 h-32 p-8

@@ -1,30 +1,31 @@
 export const SEO_CONFIG = {
-    title: "DevFest 2025 Constantine | GDG Constantine - Constantine's Premier Developer Conference",
+  title:
+    'DevFest Constantine 2025 | Dec 11-14 at Hotel El-Khiam | Google Developer Conference Algeria',
+  description:
+    "Join DevFest Constantine 2025, Algeria's largest Google Developer conference! 3 days of tech innovation featuring hands-on workshops, expert talks on AI, Cloud, Web Development, Mobile, and Hackathon competition. Dec 11-14, 2025 at Hotel El-Khiam. Connect with 500+ developers, learn from industry leaders, and build the future. Register now!",
+  canonical: 'https://devfest.gdgconstantine.com', //ToDo: Put the actual link after hosting
+  openGraph: {
+    url: 'https://devfest.gdgconstantine.com', //ToDo: Put the actual link after hosting
+    title: "DevFest Constantine 2025 | Join Algeria's Premier Tech Conference",
     description:
-        "Join GDG Constantine for DevFest 2025 in Constantine, Algeria – an inclusive annual developer festival packed with hands-on workshops, inspiring talks on Google technologies, AI, cloud, and more, plus networking with fellow devs. Register now for early bird perks!",
-    canonical: "http://localhost:3000", //ToDo: Put the actual link after hosting
-    openGraph: {
-        url: "http://localhost:3000", //ToDo: Put the actual link after hosting
-        title: "DevFest 2025 Constantine | GDG Constantine",
-        description:
-        "Discover the future of tech at DevFest 2025 by GDG Constantine. Workshops, keynotes, and community vibes await in Constantine, Algeria. Follow us on Instagram, Facebook, and LinkedIn for updates!",
-        site_name: "GDG Constantine",
-        type: "website",
-        images: [
-        {
-            url: "http://localhost:3000/devfest_2025_preview.jpg", //ToDo: Put the actual link after hosting
-            width: 1200,
-            height: 630,
-            alt: "DevFest 2025 GDG Constantine",
-        },
-        ],
+      'Experience DevFest Constantine 2025: 3 days of innovation at Hotel El-Khiam (Dec 11-14). Featuring expert speakers, AI & Cloud workshops, hackathon with prizes, and networking with 500+ developers. Powered by GDG Constantine & Google.',
+    site_name: 'GDG Constantine',
+    type: 'website',
+    images: [
+      {
+        url: 'https://https://devfest.gdgconstantine.com/devfest_2025_preview.jpg', //ToDo: Put the actual link after hosting
+        width: 1200,
+        height: 630,
+        alt: 'DevFest 2025 GDG Constantine',
+      },
+    ],
 
-        publishedTime: "2025-12-13T00:00:00Z", 
-        authors: ["GDG Constantine"],
-    },
-    socialLinks: {
-        facebook: "https://www.facebook.com/GDGConstantine",
-        instagram: "https://www.instagram.com/gdg_constantine/",
-        linkedin: "https://www.linkedin.com/company/gdg-constantine/",
-    },
+    publishedTime: '2025-12-13T00:00:00Z',
+    authors: ['GDG Constantine'],
+  },
+  socialLinks: {
+    facebook: 'https://www.facebook.com/GDGConstantine',
+    instagram: 'https://www.instagram.com/gdg_constantine/',
+    linkedin: 'https://www.linkedin.com/company/gdg-constantine/',
+  },
 };
