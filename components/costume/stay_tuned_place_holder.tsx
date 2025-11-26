@@ -55,7 +55,7 @@ export default function StayTunnedPlaceHolder() {
                             Stay Updated!
                         </h2>
                         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6 tracking-wide">
-                            Subscribe to Get <strong className=" text-gray-800"> Notified When Schedule is Out</strong> to get the latest updates about the event schedule and more.
+                            Subscribe to Get <strong className=" text-gray-800 dark:text-gray-300"> Notified When Schedule is Out</strong> to get the latest updates about the event schedule and more.
                         </p>
                         <NotificationForm />
                     </div>
