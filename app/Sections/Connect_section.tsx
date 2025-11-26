@@ -95,7 +95,7 @@ export default function ConnectSection() {
                 rounded-sm focus-visible:outline-none focus-visible:none focus-visible:none"
                 />
             </div> */}
-                <a href="#" className="">
+                <a href="https://gdg.community.dev/events/details/google-gdg-constantine-presents-devfest-constantine-2025/" className="">
                     <LiquidButton
                         // disabled={emailAddress.trim().length == 0 || fullName.trim().length == 0 || loading}
                         // disabled
