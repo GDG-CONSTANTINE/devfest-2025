@@ -10,6 +10,7 @@ This project implements an email template using **React Email** based on the pro
 
    ```bash
    git clone https://github.com/GDG-CONSTANTINE/devfest-2025.git
+   git checkout email-template
    cd devfest-2025/react-email-starter
    ```
 
