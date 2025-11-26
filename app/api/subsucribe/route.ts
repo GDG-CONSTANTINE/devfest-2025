@@ -8,11 +8,14 @@ export async function POST(request: Request) {
     await connectDB();
 
     const body = await request.json();
-    const { email } = body;
+    const { firstName, lastName, email } = body;
 
-    if (!email) {
+    if (!firstName || !lastName || !email) {
       return NextResponse.json(
-        { success: false, message: 'Email is required' },
+        {
+          success: false,
+          message: 'First name, last name, and email are required',
+        },
         { status: 400 }
       );
     }
@@ -29,7 +32,7 @@ export async function POST(request: Request) {
     }
 
     // Create new subscriber
-    const subscriber = await Subscribe.create({ email });
+    const subscriber = await Subscribe.create({ firstName, lastName, email });
 
     return NextResponse.json(
       { success: true, message: 'Successfully subscribed!', data: subscriber },
