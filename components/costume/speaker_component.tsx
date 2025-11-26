@@ -23,7 +23,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
   const socials = getAvailableSocials();
 
   return (
-    <div className="p-8 flex flex-col items-center gap-4 hover:-translate-y-6 transition-all duration-300">
+    <div className="p-8 flex flex-col items-center gap-4 w-full hover:-translate-y-6 transition-all duration-300">
       <div
         id="card"
         className="w-64 aspect-square 2xl:w-full lg:w-48 cursor-pointer"
@@ -136,9 +136,9 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
       </div>
 
       {/* Details */}
-      <div className="flex flex-col items-center instrument-sans-regular">
-        <h1 className="pr-4 text-2xl text-nowrap">{speaker.full_name}</h1>
-        <p className="text-sm text-center dark:text-gray-300 text-gray-600">
+      <div className="flex flex-col items-center justify-center instrument-sans-regular">
+        <h1 className="pr-4 text-2xl text-nowrap max-2xl:max-w-70 not-hover:truncate transition-all duration-200">{speaker.full_name}</h1>
+        <p className="2xl:text-sm text-xs text-center dark:text-gray-300 text-gray-600">
           {speaker.bio}
         </p>
       </div>

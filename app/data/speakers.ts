@@ -23,17 +23,17 @@ const SPEAKERS = [
     'https://aicignaw.com/',
     'Computer science engineer, Teacher, Cats lover, and pationnate about cloud and new technologies.'
   ),
-  new Speaker(
-    'Aqsa Kausar',
-    'AqsaKausar.png',
-    'https://www.linkedin.com/in/aqsa-kausar',
-    'https://github.com/aqsa-k',
-    'https://x.com/aqsa_k6',
-    '',
-    '',
-    '',
-    'ML engineer skilled in varied AI projects who shares her work through blogs and tech talks at Red Buffer.'
-  ),
+  // new Speaker(
+  //   'Aqsa Kausar',
+  //   'AqsaKausar.png',
+  //   'https://www.linkedin.com/in/aqsa-kausar',
+  //   'https://github.com/aqsa-k',
+  //   'https://x.com/aqsa_k6',
+  //   '',
+  //   '',
+  //   '',
+  //   'ML engineer skilled in varied AI projects who shares her work through blogs and tech talks at Red Buffer.'
+  // ),
   new Speaker(
     'Raouf RAHICHE',
     'RaoufRahiche.png',

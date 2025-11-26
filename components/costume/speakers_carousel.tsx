@@ -86,7 +86,7 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
         {/* Carousel Container */}
         <div className="overflow-hidden" ref={trackRef}>
           <div
-            className="flex transition-transform duration-300 ease-in-out gap-2 lg:gap-1"
+            className="flex transition-transform duration-300 ease-in-out gap-2 lg:gap-10"
             style={{
               transform: `translateX(-${translateX}px)`,
             }}
@@ -125,11 +125,10 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`transition-all rounded-full ${
-                idx === currentIndex
+              className={`transition-all rounded-full ${idx === currentIndex
                   ? "bg-black dark:bg-white w-3 h-3 sm:w-4 sm:h-4"
                   : "w-2 h-2 bg-gray-300"
-              }`}
+                }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
