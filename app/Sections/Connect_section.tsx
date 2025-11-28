@@ -100,7 +100,7 @@ export default function ConnectSection() {
                         // disabled={emailAddress.trim().length == 0 || fullName.trim().length == 0 || loading}
                         // disabled
                         // onClick={() => {
-                            // handleAttendantsJoin()
+                        // handleAttendantsJoin()
                         // }}
                         className="w-full md:w-fit rounded-md 
                 border-2 border-dashed border-gray-50/30 px-8 py-3 text-base font-medium transition-all hover:shadow-lg cursor-pointer">
@@ -138,19 +138,41 @@ export default function ConnectSection() {
                             Link Tree
                         </span>
                     </Link>
-                    <SocialMediaItem name={"instagram"} link="https://www.instagram.com/gdg_constantine/" />
+                    <div className="-mt-4">
+                        <SocialMediaItem name={"instagram"} link="https://www.instagram.com/gdg_constantine/" />
+                    </div>
                 </div>
                 {/* email */}
-                <div>
+                <div className="py-5 pb-10">
                     <h1 className="flex flex-col instrument-sans-small items-center justify-center">
-                        <span className="text-sm md:text-md dark:text-gray-300">Or just send us an</span>
-                        <span>
-                            <span className="text-md md:text-base"> Email </span>
-                            <span className="text-sm md:text-md dark:text-gray-300"> ?</span>
-                        </span>
+                        Or just send us an  Email ?
                     </h1>
                     <Link href={"mailto:gdgconstantine.info@gmail.com"} type="email" className="text-sm mt-4 font-semibold">
                         gdgconstantine.info@gmail.com
+                    </Link>
+                </div>
+
+                {/* Location Map */}
+                <div className="ml-auto- flex items-center gap-2">
+                    <h1 className="flex flex-col px-4 md:px-8 instrument-sans-small items-center justify-center">
+                        <span className="text-sm md:text-md dark:text-gray-300">Find us at</span>
+                        <span className="text-md md:text-base font-semibold"> Hotel El-Khiam </span>
+                    </h1>
+                    <Link
+                        href="https://maps.app.goo.gl/ShzTX4gEkMj9eQDq8"
+                        target="_blank"
+                        className="overflow-hidden rounded-lg border-2 border-dashed border-black/10 dark:border-gray-50/30 hover:border-black/30 dark:hover:border-gray-50/50 transition-all"
+                    >
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.7244892674436!2d6.6073499!3d36.3651799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12f177630591bddf%3A0x4e7eb37d2b1e5ace!2sHotel%20%26%20Spa%20Le%20Marida!5e0!3m2!1sen!2sdz!4v1700000000000!5m2!1sen!2sdz"
+                            width="200"
+                            height="150"
+                            style={{ border: 0 }}
+                            allowFullScreen={false}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            className="pointer-events-none"
+                        />
                     </Link>
                 </div>
             </div>

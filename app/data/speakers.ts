@@ -10,7 +10,7 @@ const SPEAKERS = [
     '',
     '',
     'https://samelsamel.github.io/',
-    'research engineer, Google ML expert, mentor, and international tech speaker from ENSI Tunisia.'
+    'Google Developer Expert for Machine Learning, research engineer, mentor, and international tech speaker from ENSI Tunisia.'
   ),
   new Speaker(
     'Abdenour Aliane',
@@ -21,7 +21,7 @@ const SPEAKERS = [
     '',
     '',
     'https://aicignaw.com/',
-    'Computer science engineer, Teacher, Cats lover, and pationnate about cloud and new technologies.'
+    'Google Developer Expert for Google Cloud, Computer science engineer, Teacher, Cats lover, and pationnate about cloud and new technologies, based in Algeria.'
   ),
   // new Speaker(
   //   'Aqsa Kausar',
@@ -43,7 +43,7 @@ const SPEAKERS = [
     '',
     '',
     'https://stackoverflow.com/users/4511702/raouf-rahiche',
-    'Senior Software Engineer, Flutter/Dart GDE, and Embarcadero MVP active in teaching and open-source.'
+    'Google Developer Expert for Flutter & Dart, Senior Software Engineer, and Embarcadero MVP active in teaching and open-source, based in United Kingdom.'
   ),
   new Speaker(
     'Abdelbasset MEGHRAOUI',
@@ -54,7 +54,7 @@ const SPEAKERS = [
     '',
     '',
     'https://www.survision.io/',
-    'Abdelbasset is the CEO of SURVISION, a 3rd-year ESTIN student and board member focused on tech innovation.'
+    'Abdelbasset is the CEO of SURVISION, a 3rd-year ESTIN student and board member focused on tech innovation, based in Algeria.'
   ),
 ];
 

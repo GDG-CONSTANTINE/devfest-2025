@@ -43,7 +43,7 @@ export default function HeroSection() {
                 {/* ---------- Timer Block ------------- */}
                 <div className="flex flex-col items-center pt-24">
                     <h1 className="instrument-sans-regular px-4 text-lg">
-                        DevFest Start the <strong>{DAYS[0]}th of December 2025</strong> at <strong>Hotel El-Khiam</strong> Don&apos;t Miss It!
+                        DevFest Start the <strong>{DAYS[0]}th of December 2025</strong> at <strong>Hotel El-Khayem</strong> Don&apos;t Miss It!
                     </h1>
                     <TimerBlock />
                 </div>
