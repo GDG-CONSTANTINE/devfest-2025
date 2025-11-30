@@ -153,7 +153,7 @@ export default function ConnectSection() {
                 </div>
 
                 {/* Location Map */}
-                <div className="ml-auto- flex items-center gap-2">
+                {/* <div className="ml-auto- flex items-center gap-2">
                     <h1 className="flex flex-col px-4 md:px-8 instrument-sans-small items-center justify-center">
                         <span className="text-sm md:text-md dark:text-gray-300">Find us at</span>
                         <span className="text-md md:text-base font-semibold"> Hotel El-Khiam </span>
@@ -174,7 +174,7 @@ export default function ConnectSection() {
                             className="pointer-events-none"
                         />
                     </Link>
-                </div>
+                </div> */}
             </div>
         </section>
     )
