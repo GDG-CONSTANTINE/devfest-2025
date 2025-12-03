@@ -65,9 +65,9 @@ const SponsorItem = ({ sponsor, darkMode }: {
                 <div className="p-6">
                     {/* Logo */}
                     <div className="flex items-center justify-between mb-4 no-select-image">
-                        <div className={`w-32 h-25 flex items-center justify-center overflow-hidden`}>
+                        <div className={`h-25 flex items-center justify-center overflow-hidden`}>
                             {/* If using image: */}
-                            <img src={sponsor.logo_path} alt={sponsor.name} className="w-35 h-25 object-contain p-2" />
+                            <img src={sponsor.logo_path} alt={sponsor.name} className="w-42 scale-105 object-contain p-2" />
                         </div>
                     </div>
 

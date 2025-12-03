@@ -124,7 +124,7 @@ export default function ConnectSection() {
                 </h1>
             </div>
 
-            <div className="flex flex-col md:flex-row md:pl-14 md:gap-24 items-center">
+            <div className="flex md:flex-wrap flex-col md:flex-row md:pl-14 md:gap-x-24 md:gap-y-4 items-center">
                 {/* social media */}
                 <div className="grid grid-cols-3 grid-rows-2 w-fit space-x-6 space-y-4 justify-end items-center pl-8 md:pl-auto">
                     <SocialMediaItem name={"facebook"} link="https://www.facebook.com/GDGConstantine" />
@@ -156,15 +156,15 @@ export default function ConnectSection() {
                 <div className="ml-auto- flex items-center gap-2">
                     <h1 className="flex flex-col px-4 md:px-8 instrument-sans-small items-center justify-center">
                         <span className="text-sm md:text-md dark:text-gray-300">Find us at</span>
-                        <span className="text-md md:text-base font-semibold"> Hotel El-Khiam </span>
+                        <span className="text-md md:text-base font-semibold"> Mega Fête </span>
                     </h1>
                     <Link
-                        href="https://maps.app.goo.gl/ShzTX4gEkMj9eQDq8"
+                        href="https://www.google.com/maps/place/Mega+f%C3%AAte/@36.2624775,6.584464,16.08z/data=!4m6!3m5!1s0x12f171235a8bf8e7:0x668392829426e996!8m2!3d36.2604418!4d6.5922056!16s%2Fg%2F11s51zqw38"
                         target="_blank"
                         className="overflow-hidden rounded-lg border-2 border-dashed border-black/10 dark:border-gray-50/30 hover:border-black/30 dark:hover:border-gray-50/50 transition-all"
                     >
                         <iframe
-                            src="https://www.google.com/maps/place/Mega+f%C3%AAte/@36.2624775,6.584464,16.08z/data=!4m6!3m5!1s0x12f171235a8bf8e7:0x668392829426e996!8m2!3d36.2604418!4d6.5922056!16s%2Fg%2F11s51zqw38?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.5!2d6.5922056!3d36.2604418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12f171235a8bf8e7%3A0x668392829426e996!2sMega%20f%C3%AAte!5e0!3m2!1sen!2sdz!4v1700000000000!5m2!1sen!2sdz"
                             width="200"
                             height="150"
                             style={{ border: 0 }}

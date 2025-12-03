@@ -24,9 +24,27 @@ const SPONSORS_AND_PARTNERS = [
     'partner',
     '',
     'So Code',
-    'A tech-training school that offers hands-on courses in AI, web/mobile development, programming, digital marketing and more with flexible, project-based learning.',
+    'A tech-training school that offers hands-on courses in AI, web/mobile development, programming, digital marketing and more.',
     'https://www.facebook.com/socode.school.dz',
     'https://www.linkedin.com/company/socode-school/'
+  ),
+  new Sponsor(
+    '/logo/techwaves.png',
+    'partner',
+    '',
+    'TechWaves ENSB',
+    'A student tech club at ENSB focused on technology, creativity, and innovation, organizing workshops, collaborations, and community-driven events.',
+    'https://www.instagram.com/techwaves.ensb/',
+    'https://www.linkedin.com/company/techwavesensb/'
+  ),
+  new Sponsor(
+    '/logo/aiesec.svg',
+    'partner',
+    '',
+    'AIESEC Constantine',
+    'A youth-run organization empowering students through leadership development, global volunteering, and impactful international exchange programs.',
+    'https://www.facebook.com/aiesec.constantine.75/',
+    'https://www.linkedin.com/company/aiesec/'
   ),
 ];
 
