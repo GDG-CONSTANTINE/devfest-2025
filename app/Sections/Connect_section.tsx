@@ -164,7 +164,7 @@ export default function ConnectSection() {
                         className="overflow-hidden rounded-lg border-2 border-dashed border-black/10 dark:border-gray-50/30 hover:border-black/30 dark:hover:border-gray-50/50 transition-all"
                     >
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.7244892674436!2d6.6073499!3d36.3651799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12f177630591bddf%3A0x4e7eb37d2b1e5ace!2sHotel%20%26%20Spa%20Le%20Marida!5e0!3m2!1sen!2sdz!4v1700000000000!5m2!1sen!2sdz"
+                            src="https://www.google.com/maps/place/Mega+f%C3%AAte/@36.2624775,6.584464,16.08z/data=!4m6!3m5!1s0x12f171235a8bf8e7:0x668392829426e996!8m2!3d36.2604418!4d6.5922056!16s%2Fg%2F11s51zqw38?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D"
                             width="200"
                             height="150"
                             style={{ border: 0 }}
