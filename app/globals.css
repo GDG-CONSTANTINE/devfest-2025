@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 /* ---break---*/
 @custom-variant dark (&:is(.dark *));
 
@@ -45,34 +45,33 @@
 
 /* Fonts for the web page*/
 .instrument-sans-regular {
-  font-family: "Instrument Sans", sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-variation-settings: "wdth" 100;
+  font-variation-settings: 'wdth' 100;
 }
 .instrument-sans-small {
-  font-family: "Instrument Sans", sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
-  font-variation-settings: "wdth" 10;
+  font-variation-settings: 'wdth' 10;
 }
 
 /* Hackathon font */
 .jaro-regular {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
 .righteous-regular {
-  font-family: "Righteous", sans-serif;
+  font-family: 'Righteous', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-
 
 /* ---break---*/
 :root {
@@ -153,28 +152,26 @@
   }
 }
 
-html{
+html {
   scroll-behavior: smooth;
-
 }
 
 .active {
   font-weight: 600;
   transition: all 0.3s ease-in-out;
-  font-family: "Instrument Sans", sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
 }
 
 .active-dark {
   font-weight: 600;
   transition: all 0.3s ease-in-out;
-  font-family: "Instrument Sans", sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
 }
 
 .navbar-links a:hover {
   color: gray;
   transition: all 0.2s ease-in-out;
 }
-
 
 /* Hide scrollbar buttons (up/down arrows) - WebKit only */
 ::-webkit-scrollbar-button {
@@ -219,25 +216,38 @@ html{
   background: #5a5a5a; /* Dark hover: Lighter gray for contrast */
 }
 
-
 .no-select-image {
--webkit-touch-callout: none !important;
--webkit-user-select: none !important;
--webkit-user-drag: none !important;
--khtml-user-select: none !important;
--moz-user-select: none !important;
--ms-user-select: none !important;
-user-select: none !important;
-pointer-events: none !important;
-cursor: default !important;
-  
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  cursor: default !important;
 }
 
-.about-paragraph strong{
+.about-paragraph strong {
   color: black;
 }
 
-.about-paragraph-dark strong{
+.about-paragraph-dark strong {
   color: white;
 }
 
+/* Toast slide-in animation */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}

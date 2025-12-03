@@ -9,7 +9,7 @@ import SpeakersSection from "./Sections/Speakers_section";
 import SponsorsSection from "./Sections/Sponsors_section";
 import { DISPLAY_HACKATHON, DISPLAY_SCHEDULE } from './data/settings';
 import StayTunnedPlaceHolder from '@/components/costume/stay_tuned_place_holder';
-import { SEO_CONFIG } from './data/seo_data';
+import CostumeToast from '@/components/costume/costume_toast';
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -62,7 +62,7 @@ export default function Home() {
 
     // Handle initial load: Scroll to hash if present, or set to first
     const handleInitial = () => {
-      const hash = window.location.hash.slice(1); 
+      const hash = window.location.hash.slice(1);
       if (hash) {
         const targetSection = document.getElementById(hash);
         if (targetSection) {
@@ -86,13 +86,14 @@ export default function Home() {
       }
       clearTimeout(timeoutId);
     };
-  }, []);  
+  }, []);
 
   return (
     <main className="overflow-x-hidden">
-      <HeroSection/>
-      <AboutSection/>
-      <SpeakersSection/>
+      <CostumeToast />
+      <HeroSection />
+      <AboutSection />
+      <SpeakersSection />
       {DISPLAY_SCHEDULE
         ? <ScheduleSection />
         : <StayTunnedPlaceHolder />}
