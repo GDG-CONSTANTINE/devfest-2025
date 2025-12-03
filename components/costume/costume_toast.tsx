@@ -3,11 +3,14 @@
 import { useState, useEffect } from 'react'
 import { X, ExternalLink, OctagonAlert } from 'lucide-react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
 
 function CostumeToast() {
   const [isVisible, setIsVisible] = useState(false)
   const [isMinimized, setIsMinimized] = useState(false)
+
+  const x = useMotionValue(0)
+  const opacity = useTransform(x, [0, 50], [1, 0.5])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,6 +26,12 @@ function CostumeToast() {
 
   const handleExpand = () => {
     setIsMinimized(false)
+  }
+
+  const handleDragEnd = (_: unknown, info: { offset: { x: number } }) => {
+    if (info.offset.x > 10) {
+      setIsMinimized(true)
+    }
   }
 
   if (!isVisible) return null
@@ -60,17 +69,21 @@ function CostumeToast() {
           // Full toast
           <motion.div
             key="expanded"
+            drag="x"
+            dragConstraints={{ left: 0, right: 100 }}
+            dragElastic={0.1}
+            onDragEnd={handleDragEnd}
+            style={{ x, transformOrigin: 'top right' }}
             initial={{ scale: 0.3, opacity: 0, borderRadius: 50, originX: 1, originY: 0 }}
-            animate={{ scale: 1, opacity: 1, borderRadius: 8 }}
-            exit={{ scale: 0.3, opacity: 0, borderRadius: 50 }}
+            animate={{ scale: 1, opacity: 1, borderRadius: 8, x: 0 }}
+            exit={{ scale: 0.3, opacity: 0, borderRadius: 50, x: 50 }}
             transition={{
               type: "spring",
               stiffness: 350,
               damping: 25,
               duration: 0.5
             }}
-            className="w-80 bg-white dark:bg-zinc-900 rounded-lg shadow-xl border border-gray-200 dark:border-zinc-700 overflow-hidden"
-            style={{ transformOrigin: 'top right' }}
+            className="w-80 bg-white dark:bg-zinc-900 rounded-lg shadow-xl border border-gray-200 dark:border-zinc-700 overflow-hidden cursor-grab active:cursor-grabbing"
           >
             {/* Header */}
             <motion.div
