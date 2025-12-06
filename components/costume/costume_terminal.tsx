@@ -1,7 +1,7 @@
-import { createNewHackathonMember } from '@/app/services/firebase_handler';
 import { HackathonEntry } from '@/Types/hackathon_entry';
 import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import FormField from './field_form';
+import { createNewHackathonMember } from '@/app/services/hackathon_handler';
 
 const TYPING_DELAY = 20
 const terminalLines = [

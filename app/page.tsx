@@ -10,6 +10,7 @@ import SponsorsSection from "./Sections/Sponsors_section";
 import { DISPLAY_HACKATHON, DISPLAY_SCHEDULE } from './data/settings';
 import StayTunnedPlaceHolder from '@/components/costume/stay_tuned_place_holder';
 import CostumeToast from '@/components/costume/costume_toast';
+import WorkShopsSection from './Sections/workshops_section';
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -94,6 +95,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <SpeakersSection />
+      <WorkShopsSection />
       {DISPLAY_SCHEDULE
         ? <ScheduleSection />
         : <StayTunnedPlaceHolder />}

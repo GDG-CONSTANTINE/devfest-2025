@@ -151,6 +151,12 @@ export default function NavBar() {
                     Speakers
                 </a>
                 <a
+                    href="#Workshops"
+                    className="relative py-2 px-3 text-sm font-medium text-gray-700 dark:text-gray-100 rounded-md"
+                >
+                    Workshops
+                </a>
+                <a
                     href="#Schedule"
                     className="relative py-2 px-3 text-sm font-medium text-gray-700 dark:text-gray-100 rounded-md"
                 >

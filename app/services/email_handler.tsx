@@ -1,33 +1,45 @@
-import ReqResponse from "@/Models/req_response"
+import emailBody from '@/lib/email_body';
+import nodemailer from 'nodemailer';
 
+interface SendEmailPayload {
+  userName: string;
+  userEmail: string;
+  leaderKey: string;
+}
 
+const createTransport = () => nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false,
+  },
+});
 
+export default async function sendEmailToUser(payload: SendEmailPayload): Promise<{ success: boolean; message?: string; error?: string }> {
+  const transporter = createTransport();
+  const { userName, leaderKey, userEmail } = payload;
+  const email = {
+    from: `GDG constantine <${process.env.SMTP_USER}>`,
+    to: userEmail,
+    subject: 'Update About Hackathon Team Creation',
+    html: emailBody({ leaderName: userName, leaderKey }), // Matched your naming
+    headers: {
+      'X-Entity-Ref-ID': 'newmail',
+    },
+  };
 
-export default async function sendEmailToUser({ userName, userEmail, leaderKey }
-    : { userName: string, userEmail: string, leaderKey: string }) {
-    try {
-        const res = await fetch('/api/send-email', {
-            method: "POST",
-            cache: "no-cache",
-            body: JSON.stringify({
-                userName,
-                userEmail,
-                leaderKey
-            }),
-            headers: {
-                'content-Type': 'application/json'
-            }
-        })
-
-        if (res.ok) {
-            const data = await res.json()
-            return new ReqResponse("Email sent with leader key", true, "")
-        }
-
-        return new ReqResponse("Failed to Send Email", false, "")
-    } catch (error) {
-        if (error instanceof Error) {
-            return new ReqResponse("Failed to Send Email", false, error.message)
-        }
-    }
+  try {
+    await transporter.sendMail(email);
+    return { success: true, message: 'email sent successfully' };
+  } catch (error) {
+    console.log('Email send error:', error);
+    return { 
+      success: false, 
+      error: error instanceof Error ? error.message : 'Unknown email error' 
+    };
+  }
 }
