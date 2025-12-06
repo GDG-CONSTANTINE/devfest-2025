@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function WorkShopsSection() {
     return (
-        <div id="Workshops" className="w-screen min-h-screen">
+        <div id="Workshops" className="w-screen">
             {/* Title */}
             <div className="px-8 pt-10 pb-4 flex gap-2">
                 <ArrowRight size={30} />
