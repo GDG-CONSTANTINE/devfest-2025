@@ -5,7 +5,6 @@ const API_BASE = '/api'; // Adjust if using a different base path
 
 // Helper function to make POST requests to API routes
 async function apiPost<T>(endpoint: string, body: T): Promise<ReqResponse> {
-  try {
     const response = await fetch(`${API_BASE}${endpoint}`, {
       method: 'POST',
       headers: {
@@ -14,16 +13,9 @@ async function apiPost<T>(endpoint: string, body: T): Promise<ReqResponse> {
       body: JSON.stringify(body),
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     const data = await response.json();
     return new ReqResponse(data.message, data.success, data.data || data.error);
-  } catch (error) {
-    console.error('API call failed:', error);
-    return new ReqResponse('Network or API error occurred', false, error instanceof Error ? error.message : null);
-  }
+
 }
 
 // Client-side wrapper for createNewAttendant

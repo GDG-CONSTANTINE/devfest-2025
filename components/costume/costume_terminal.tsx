@@ -170,13 +170,14 @@ const AnimatedTerminal = forwardRef((props, ref) => {
       console.log('Form submitted:', formData);
       // Handle form submission here
       const res = await createNewHackathonMember((formData as HackathonEntry))
+      console.log(res)
       if (res && res.success) {
         console.log(res.message)
         setShowForm(false)
         handleClear()
         setMessage(res.data as string)
       } else {
-        setErrorMessage(res?.data as string)
+        setErrorMessage(res?.message as string)
       }
     } catch (error) {
       console.log(error)
