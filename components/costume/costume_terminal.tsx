@@ -1,5 +1,6 @@
 import { HackathonEntry } from '@/Types/hackathon_entry';
 import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
+import { useIsInView } from '@/hooks/use-is-in-view';
 import FormField from './field_form';
 import { createNewHackathonMember } from '@/app/services/hackathon_handler';
 
@@ -22,9 +23,9 @@ const terminalLines = [
   { text: ">>  Hackathon_2025 = {", color: "text-cyan-400", delay: TYPING_DELAY },
   { text: "     id: 'Hackathon_constantine_2025',", color: "text-white", delay: TYPING_DELAY },
   { text: "     name: 'Hackathon 2025',", color: "text-white", delay: TYPING_DELAY },
-  { text: "     start_date: '2025-12-11',", color: "text-white", delay: TYPING_DELAY },
+  { text: "     start_date: '2025-12-12',", color: "text-white", delay: TYPING_DELAY },
   { text: "     end_date: '2025-12-14',", color: "text-white", delay: TYPING_DELAY },
-  { text: "     location: 'Mega Fete Hall, La Zone Ali Mendjeli", color: "text-white", delay: TYPING_DELAY },
+  { text: "     location: 'Technopole, University of Constantine 3',", color: "text-white", delay: TYPING_DELAY },
   { text: "  }", color: "text-cyan-400", delay: TYPING_DELAY },
   { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
   { text: ">>  NOTICE: Don't miss it", color: "text-white", delay: TYPING_DELAY },
@@ -43,6 +44,26 @@ const AnimatedTerminal = forwardRef((props, ref) => {
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false)
+  const viewHandle = React.useRef<HTMLDivElement | null>(null)
+  const { ref: inViewRef /* unused result for backwards compatibility */, isInView } = useIsInView<HTMLDivElement>(viewHandle, { inView: true, inViewMargin: '0px' })
+  const [isFortyPxVisible, setIsFortyPxVisible] = useState(false)
+
+  // Custom IntersectionObserver to require at least 40px visible
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const el = viewHandle.current
+    if (!el) return
+
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+      // Check if at least 40px of the element is visible (using height for vertical scrolling)
+      const visibleHeight = Math.min(entry.boundingClientRect.height, entry.intersectionRect.height)
+      setIsFortyPxVisible(visibleHeight >= 40)
+    }, { root: null, rootMargin: '0px', threshold: [0, 0.01, 0.05, 0.1, 0.2, 0.5, 0.75, 1] })
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   // Audio context for typing sound
   const playTypingSound = () => {
@@ -86,7 +107,11 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     why_participate: ''
   });
 
+  // Enable typing only when at least 40px of section is visible
+  const canType = isFortyPxVisible
+
   useEffect(() => {
+    if (!canType) return;
     if (currentLine >= terminalLines.length) {
       setShowForm(true);
       return;
@@ -102,7 +127,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
           playTypingSound();
         }
         setCurrentChar(currentChar + 1);
-      }, fullText.startsWith('>>  MESSAGE:') || fullText.startsWith('>>  OBJECTIVE:') ? 5 : standardDelay);
+      }, standardDelay === 0 ? 0 : fullText.startsWith('>>  MESSAGE:') || fullText.startsWith('>>  OBJECTIVE:') ? 5 : standardDelay);
       return () => clearTimeout(timer);
     } else {
       const timer = setTimeout(() => {
@@ -112,7 +137,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [currentChar, currentLine, standardDelay]);
+  }, [currentChar, currentLine, standardDelay, canType]);
 
 
   // 
@@ -214,7 +239,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
   }
 
   return (
-    <div>
+    <div ref={inViewRef}>
       <div className="p-6 font-mono">
         <div className="w-full flex flex-col pl-2 leading-7 text-sm">
           {lines.map((line, index) => (

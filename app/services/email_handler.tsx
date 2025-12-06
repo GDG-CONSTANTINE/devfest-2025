@@ -1,5 +1,6 @@
 import emailBody from '@/lib/email_body';
 import nodemailer from 'nodemailer';
+import path from 'path';
 
 interface SendEmailPayload {
   userName: string;
@@ -10,7 +11,7 @@ interface SendEmailPayload {
 const createTransport = () => nodemailer.createTransport({
   host: process.env.SMTP_HOST || '',
   port: parseInt(process.env.SMTP_PORT || '587'),
-  secure : false,
+  secure: false,
   auth: {
     user: process.env.SMTP_USER || '',
     pass: process.env.SMTP_PASS || '',
@@ -29,10 +30,22 @@ export default async function sendEmailToUser(payload: SendEmailPayload): Promis
     from: `GDG constantine <${process.env.SMTP_USER}>`,
     to: userEmail,
     subject: 'Update About Hackathon Team Creation',
-    html: emailBody({ leaderName: userName, leaderKey }), // Matched your naming
+    html: emailBody({ leaderName: userName, leaderKey }),
     headers: {
       'X-Entity-Ref-ID': 'newmail',
     },
+    attachments: [
+      {
+        filename: 'top.png',
+        path: path.join(process.cwd(), 'public', 'email', 'top.png'),
+        cid: 'top'
+      },
+      {
+        filename: 'bottom.png',
+        path: path.join(process.cwd(), 'public', 'email', 'bottom.png'),
+        cid: 'bottom'
+      }
+    ]
   };
 
   try {
@@ -42,9 +55,9 @@ export default async function sendEmailToUser(payload: SendEmailPayload): Promis
     return { success: true, message: 'email sent successfully' };
   } catch (error) {
     console.log('Email send error:', error);
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Unknown email error' 
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown email error'
     };
   }
 }

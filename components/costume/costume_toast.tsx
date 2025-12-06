@@ -20,6 +20,25 @@ function CostumeToast() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Auto-minimize when Hackathon section is more than 10px visible
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const hackathonSection = document.querySelector('#Hackathon')
+    if (!hackathonSection) return
+
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+      const visibleHeight = Math.min(entry.boundingClientRect.height, entry.intersectionRect.height)
+      if (visibleHeight > 10) {
+        setIsMinimized(true)
+      }
+    }, { root: null, rootMargin: '0px', threshold: [0, 0.01, 0.05, 0.1, 0.2, 0.5, 0.75, 1] })
+
+    observer.observe(hackathonSection)
+    return () => observer.disconnect()
+  }, [])
+
   const handleClose = () => {
     setIsMinimized(true)
   }

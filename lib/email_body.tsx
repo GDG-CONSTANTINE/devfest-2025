@@ -76,9 +76,8 @@ export default function emailBody({ leaderName, leaderKey }
         </head>
         <body>
             <div class="email-container">
-                <div class="header">
-                    <h1 Congratulations on Team Creation!</h1>
-                </div>
+                <img src="cid:top" alt="Header" style="width: 100%; display: block;" />
+                
                 
                 <div class="content">
                     <p>Hello <strong>${leaderName}</strong>,</p>
@@ -99,9 +98,7 @@ export default function emailBody({ leaderName, leaderKey }
                     <p>Thank you,<br><strong>GDG Constantine</strong></p>
                 </div>
                 
-                <div class="footer">
-                    <p>&copy; 2025 Your Company. All rights reserved.</p>
-                </div>
+                <img src="cid:bottom" alt="Footer" style="width: 100%; display: block;" />
             </div>
         </body>
         </html>`
