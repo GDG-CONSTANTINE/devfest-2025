@@ -1,7 +1,7 @@
+import { createNewHackathonMember } from '@/app/services/firebase_handler';
 import { HackathonEntry } from '@/Types/hackathon_entry';
 import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import FormField from './field_form';
-import { createNewHackathonMember } from '@/app/services/hackathon_handler';
 
 const TYPING_DELAY = 20
 const terminalLines = [
@@ -14,9 +14,9 @@ const terminalLines = [
   { text: ">>  ERROR: Rebooting....", color: "text-red-500", delay: TYPING_DELAY },
   { text: ">>  ALERT: A■■■■ G■■n■d", color: "text-yellow-500", delay: TYPING_DELAY },
   { text: ">>  Loading Data Clusters.... (3/3)", color: "text-yellow-400", delay: TYPING_DELAY },
-  { text: ">>  MESSAGE: 'You've been invited to join the GDG Constantine 2025 Hackathon! Bring your team and prepare for an intense coding experience where collaboration meets competition. This is your chance to push technical boundaries, build something extraordinary, and compete alongside the brightest minds in our community. Work together to tackle challenging problems, learn from each other, and showcase what your team can accomplish. Whether you're seasoned developers or rising talents, this is your playground to innovate, experiment, and fight for the top spot.'", color: "text-white", delay: 0 },
+  { text: ">>  MESSAGE: 'You've been invited to join the GDG Constantine 2025 Hackathon! Bring your team and prepare for an intense coding experience where collaboration meets competition. This is your chance to push technical boundaries, build something extraordinary, and compete alongside the brightest minds in our community. Work together to tackle challenging problems, learn from each other, and showcase what your team can accomplish. Whether you're seasoned developers or rising talents, this is your playground to innovate, experiment, and fight for the top spot.'", color: "text-white", delay: TYPING_DELAY },
   { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
-  { text: ">>  OBJECTIVE: 'Complete a project within the time limit working alongside team members and pitch the work in front of judging members formed of top voices in the tech sector'", color: "text-white", delay: 0 },
+  { text: ">>  OBJECTIVE: 'Complete a project within the time limit working alongside team members and pitch the work in front of judging members formed of top voices in the tech sector'", color: "text-white", delay: TYPING_DELAY },
   { text: ">>  Loading Devfest Constantine 2025 Data Model.... (1/2) ", color: "text-green-400", delay: TYPING_DELAY },
   { text: ">>  Loading Devfest Constantine 2025 Data Model.... (2/2) ", color: "text-green-400", delay: TYPING_DELAY },
   { text: ">>  Hackathon_2025 = {", color: "text-cyan-400", delay: TYPING_DELAY },
@@ -24,9 +24,10 @@ const terminalLines = [
   { text: "     name: 'Hackathon 2025',", color: "text-white", delay: TYPING_DELAY },
   { text: "     start_date: '2025-12-11',", color: "text-white", delay: TYPING_DELAY },
   { text: "     end_date: '2025-12-14',", color: "text-white", delay: TYPING_DELAY },
-  { text: "     location: 'Mega Fete Hall, La Zone Ali Mendjeli", color: "text-white", delay: TYPING_DELAY },
+  { text: "     location: 'Hotel El-Khiam'", color: "text-white", delay: TYPING_DELAY },
   { text: "  }", color: "text-cyan-400", delay: TYPING_DELAY },
   { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
+  { text: ">>  Time Left Till Starting: 30d - 8h - 22m", color: "text-yellow-300", delay: TYPING_DELAY },
   { text: ">>  NOTICE: Don't miss it", color: "text-white", delay: TYPING_DELAY },
   { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
   { text: ">>  ALERT: Creating new Hackathon Entry....", color: "text-green-400", delay: TYPING_DELAY },
@@ -43,31 +44,8 @@ const AnimatedTerminal = forwardRef((props, ref) => {
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false)
-
-  // Audio context for typing sound
-  const playTypingSound = () => {
-    if (typeof window === 'undefined') return
-
-    try {
-      const audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)()
-      const oscillator = audioContext.createOscillator()
-      const gainNode = audioContext.createGain()
-
-      oscillator.connect(gainNode)
-      gainNode.connect(audioContext.destination)
-
-      oscillator.frequency.value = 800
-      oscillator.type = 'square'
-
-      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime)
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.02)
-
-      oscillator.start(audioContext.currentTime)
-      oscillator.stop(audioContext.currentTime + 0.02)
-    } catch (error) {
-      // Silent fail if audio context is not supported
-    }
-  }
+  const audioContextRef = React.useRef<AudioContext | null>(null)
+  const [audioInitialized, setAudioInitialized] = React.useState(false)
 
 
   // 
@@ -86,6 +64,49 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     why_participate: ''
   });
 
+  // Initialize audio context on user interaction
+  useEffect(() => {
+    const initAudio = () => {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
+        setAudioInitialized(true)
+      }
+    }
+    
+    document.addEventListener('click', initAudio, { once: true })
+    document.addEventListener('keydown', initAudio, { once: true })
+    
+    return () => {
+      document.removeEventListener('click', initAudio)
+      document.removeEventListener('keydown', initAudio)
+    }
+  }, [])
+
+  // Play typing sound
+  const playTypingSound = () => {
+    if (!audioContextRef.current || !audioInitialized) return
+    
+    try {
+      const ctx = audioContextRef.current
+      const oscillator = ctx.createOscillator()
+      const gainNode = ctx.createGain()
+      
+      oscillator.connect(gainNode)
+      gainNode.connect(ctx.destination)
+      
+      oscillator.frequency.value = 800
+      oscillator.type = 'square'
+      
+      gainNode.gain.setValueAtTime(0.05, ctx.currentTime)
+      gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.02)
+      
+      oscillator.start(ctx.currentTime)
+      oscillator.stop(ctx.currentTime + 0.02)
+    } catch (error) {
+      // Silently fail if audio is blocked
+    }
+  }
+
   useEffect(() => {
     if (currentLine >= terminalLines.length) {
       setShowForm(true);
@@ -96,13 +117,14 @@ const AnimatedTerminal = forwardRef((props, ref) => {
     const fullText = currentLineData.text;
 
     if (currentChar < fullText.length) {
+      // Play sound every 3rd character to avoid being too annoying
+      if (currentChar % 3 === 0 && standardDelay > 0) {
+        playTypingSound()
+      }
+      
       const timer = setTimeout(() => {
-        // Only play sound every 3 characters to reduce annoyance
-        if (currentChar % 3 === 0) {
-          playTypingSound();
-        }
         setCurrentChar(currentChar + 1);
-      }, fullText.startsWith('>>  MESSAGE:') || fullText.startsWith('>>  OBJECTIVE:') ? 5 : standardDelay);
+      }, standardDelay);
       return () => clearTimeout(timer);
     } else {
       const timer = setTimeout(() => {
@@ -288,7 +310,6 @@ const AnimatedTerminal = forwardRef((props, ref) => {
                   { value: 'M', label: 'M' },
                   { value: 'L', label: 'L' },
                   { value: 'XL', label: 'XL' },
-                  { value: 'XXL', label: 'XXL' },
                 ]}
               />
 

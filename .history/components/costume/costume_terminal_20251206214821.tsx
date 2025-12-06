@@ -47,21 +47,21 @@ const AnimatedTerminal = forwardRef((props, ref) => {
   // Audio context for typing sound
   const playTypingSound = () => {
     if (typeof window === 'undefined') return
-
+    
     try {
       const audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)()
       const oscillator = audioContext.createOscillator()
       const gainNode = audioContext.createGain()
-
+      
       oscillator.connect(gainNode)
       gainNode.connect(audioContext.destination)
-
+      
       oscillator.frequency.value = 800
       oscillator.type = 'square'
-
+      
       gainNode.gain.setValueAtTime(0.1, audioContext.currentTime)
       gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.02)
-
+      
       oscillator.start(audioContext.currentTime)
       oscillator.stop(audioContext.currentTime + 0.02)
     } catch (error) {
@@ -102,7 +102,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
           playTypingSound();
         }
         setCurrentChar(currentChar + 1);
-      }, fullText.startsWith('>>  MESSAGE:') || fullText.startsWith('>>  OBJECTIVE:') ? 5 : standardDelay);
+      }, fullText.startsWith('message') standardDelay);
       return () => clearTimeout(timer);
     } else {
       const timer = setTimeout(() => {

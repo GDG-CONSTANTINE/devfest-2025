@@ -15,7 +15,7 @@ export default function HackathonSection() {
         >
             {/* window terminal */}
             <div className="border border-gray-100/50 m-0 md:m-8 min-h-screen bg-black text-white">
-
+                
 
                 {/*----- Control bar ----- */}
                 <div className="w-full h-12 border-gray-100/50 border-b flex justify-between items-center">
@@ -25,7 +25,7 @@ export default function HackathonSection() {
                     <div className="flex ">
                         <div
                             onClick={() => {
-                                if (terminalRef.current && (terminalRef.current as { triggerAction: () => void }).triggerAction) {
+                                if (terminalRef.current && (terminalRef.current as {triggerAction: () => void}).triggerAction) {
                                     (terminalRef.current as { triggerAction: () => void }).triggerAction()
                                 }
                             }}

@@ -14,9 +14,9 @@ const terminalLines = [
   { text: ">>  ERROR: Rebooting....", color: "text-red-500", delay: TYPING_DELAY },
   { text: ">>  ALERT: A■■■■ G■■n■d", color: "text-yellow-500", delay: TYPING_DELAY },
   { text: ">>  Loading Data Clusters.... (3/3)", color: "text-yellow-400", delay: TYPING_DELAY },
-  { text: ">>  MESSAGE: 'You've been invited to join the GDG Constantine 2025 Hackathon! Bring your team and prepare for an intense coding experience where collaboration meets competition. This is your chance to push technical boundaries, build something extraordinary, and compete alongside the brightest minds in our community. Work together to tackle challenging problems, learn from each other, and showcase what your team can accomplish. Whether you're seasoned developers or rising talents, this is your playground to innovate, experiment, and fight for the top spot.'", color: "text-white", delay: 0 },
+  { text: ">>  MESSAGE: 'You've been invited to join the GDG Constantine 2025 Hackathon! Bring your team and prepare for an intense coding experience where collaboration meets competition. This is your chance to push technical boundaries, build something extraordinary, and compete alongside the brightest minds in our community. Work together to tackle challenging problems, learn from each other, and showcase what your team can accomplish. Whether you're seasoned developers or rising talents, this is your playground to innovate, experiment, and fight for the top spot.'", color: "text-white", delay: 3 },
   { text: ">>  ", color: "text-white", delay: TYPING_DELAY },
-  { text: ">>  OBJECTIVE: 'Complete a project within the time limit working alongside team members and pitch the work in front of judging members formed of top voices in the tech sector'", color: "text-white", delay: 0 },
+  { text: ">>  OBJECTIVE: 'Complete a project within the time limit working alongside team members and pitch the work in front of judging members formed of top voices in the tech sector'", color: "text-white", delay: 3 },
   { text: ">>  Loading Devfest Constantine 2025 Data Model.... (1/2) ", color: "text-green-400", delay: TYPING_DELAY },
   { text: ">>  Loading Devfest Constantine 2025 Data Model.... (2/2) ", color: "text-green-400", delay: TYPING_DELAY },
   { text: ">>  Hackathon_2025 = {", color: "text-cyan-400", delay: TYPING_DELAY },
@@ -47,21 +47,21 @@ const AnimatedTerminal = forwardRef((props, ref) => {
   // Audio context for typing sound
   const playTypingSound = () => {
     if (typeof window === 'undefined') return
-
+    
     try {
       const audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)()
       const oscillator = audioContext.createOscillator()
       const gainNode = audioContext.createGain()
-
+      
       oscillator.connect(gainNode)
       gainNode.connect(audioContext.destination)
-
+      
       oscillator.frequency.value = 800
       oscillator.type = 'square'
-
+      
       gainNode.gain.setValueAtTime(0.1, audioContext.currentTime)
       gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.02)
-
+      
       oscillator.start(audioContext.currentTime)
       oscillator.stop(audioContext.currentTime + 0.02)
     } catch (error) {
@@ -102,7 +102,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
           playTypingSound();
         }
         setCurrentChar(currentChar + 1);
-      }, fullText.startsWith('>>  MESSAGE:') || fullText.startsWith('>>  OBJECTIVE:') ? 5 : standardDelay);
+      }, standardDelay);
       return () => clearTimeout(timer);
     } else {
       const timer = setTimeout(() => {

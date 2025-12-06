@@ -102,7 +102,7 @@ const AnimatedTerminal = forwardRef((props, ref) => {
           playTypingSound();
         }
         setCurrentChar(currentChar + 1);
-      }, fullText.startsWith('>>  MESSAGE:') || fullText.startsWith('>>  OBJECTIVE:') ? 5 : standardDelay);
+      }, fullText.startsWith('>>  MESSAGE:') || fullText.startsWith('>>  MESSAGE:') ? 0 : standardDelay);
       return () => clearTimeout(timer);
     } else {
       const timer = setTimeout(() => {
