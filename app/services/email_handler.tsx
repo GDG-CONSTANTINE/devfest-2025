@@ -8,19 +8,22 @@ interface SendEmailPayload {
 }
 
 const createTransport = () => nodemailer.createTransport({
-  service: 'gmail',
+  host: process.env.SMTP_HOST || '',
+  port: parseInt(process.env.SMTP_PORT || '587'),
+  secure : false,
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: process.env.SMTP_USER || '',
+    pass: process.env.SMTP_PASS || '',
   },
   tls: {
     // do not fail on invalid certs
     rejectUnauthorized: false,
   },
-});
+} as nodemailer.TransportOptions);
 
 export default async function sendEmailToUser(payload: SendEmailPayload): Promise<{ success: boolean; message?: string; error?: string }> {
   const transporter = createTransport();
+  console.log("send email process...")
   const { userName, leaderKey, userEmail } = payload;
   const email = {
     from: `GDG constantine <${process.env.SMTP_USER}>`,
@@ -33,7 +36,9 @@ export default async function sendEmailToUser(payload: SendEmailPayload): Promis
   };
 
   try {
+    console.log("send email...")
     await transporter.sendMail(email);
+    console.log("email sent")
     return { success: true, message: 'email sent successfully' };
   } catch (error) {
     console.log('Email send error:', error);

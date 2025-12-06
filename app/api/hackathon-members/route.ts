@@ -26,7 +26,6 @@ const isUserInTeam = async (fullName: string) => {
 // Server-side createTeamInDb (internal)
 async function createTeamInDb(hackathonEntry: HackathonEntry): Promise<ReqResponse> {
   try {
-    console.log("create new team");
     const EMAIL_SENDING_RETRIES = 10;
     const MAX_KEY_RETRIES = 10;
     const RETRY_DELAY_MS = 1000;
@@ -100,6 +99,7 @@ async function createTeamInDb(hackathonEntry: HackathonEntry): Promise<ReqRespon
 // Server-side createNewHackathonMember
 async function createNewHackathonMember(hackathonEntry: HackathonEntry): Promise<ReqResponse> {
   try {
+    console.log("start creating....")
     let leaderKey = null;
     let leaderNote = null;
 
@@ -109,6 +109,8 @@ async function createNewHackathonMember(hackathonEntry: HackathonEntry): Promise
     }
 
     if (hackathonEntry.role === "leader") {
+      console.log("star creating team process...")
+      hackathonEntry.leader_key = null
       const newTeamRes = await createTeamInDb(hackathonEntry);
       if (newTeamRes && newTeamRes.success) {
         leaderKey = newTeamRes.data;
