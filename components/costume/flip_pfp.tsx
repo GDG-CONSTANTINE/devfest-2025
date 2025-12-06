@@ -28,7 +28,7 @@ export default function FlipPfpComponent({ speaker }: { speaker: Speaker }) {
         <div>
             <div
                 id="card"
-                className="w-64 aspect-square 2xl:w-full lg:w-48 cursor-pointer"
+                className="w-50 aspect-square cursor-pointer"
                 style={{ perspective: "1000px" }}
                 onClick={() => setIsFlipped(!isFlipped)}
             >
