@@ -1,11 +1,10 @@
 import { LiquidButton } from "@/components/animate-ui/components/buttons/liquid";
-import { Input } from "@/components/ui/input";
 import { ArrowRight, Globe, Hash, LoaderCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { createNewAttendant } from "../services/hackathon_handler";
 import { GDG_FORM_URL } from "../data/settings";
+import { createNewAttendant } from "../services/hackathon_handler";
 
 
 function SocialMediaItem({ name, link }: { name: string, link: string }) {
