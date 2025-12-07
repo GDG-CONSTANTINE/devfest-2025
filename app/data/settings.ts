@@ -1,6 +1,6 @@
 const TARGET_DATE = new Date('2025-12-13T07:59:59');
 const DAYS = [13, 14, 15];
-const DISPLAY_HACKATHON = true;
+const DISPLAY_HACKATHON = false;
 const DISPLAY_SCHEDULE = false;
 const GDG_FORM_URL = ""
 
