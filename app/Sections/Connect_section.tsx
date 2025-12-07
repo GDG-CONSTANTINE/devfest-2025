@@ -1,5 +1,4 @@
 import { LiquidButton } from "@/components/animate-ui/components/buttons/liquid";
-import { Input } from "@/components/ui/input";
 import { ArrowRight, Globe, Hash, LoaderCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
