@@ -45,17 +45,17 @@ const SPEAKERS = [
     '',
     'https://stackoverflow.com/users/4511702/raouf-rahiche',
   ),
-  new Speaker(
-    'Abdelbasset MEGHRAOUI',
-    'AbdelbassetMEGHRAOUI.jpg',
-    'Abdelbasset is the CEO of SURVISION, a 3rd-year ESTIN student and board member focused on tech innovation, based in Algeria.',
-    'https://www.linkedin.com/in/abdelbasset-meghraoui/',
-    '',
-    '',
-    '',
-    '',
-    'https://www.survision.io/',
-  ),
+  // new Speaker(
+  //   'Abdelbasset MEGHRAOUI',
+  //   'AbdelbassetMEGHRAOUI.jpg',
+  //   'Abdelbasset is the CEO of SURVISION, a 3rd-year ESTIN student and board member focused on tech innovation, based in Algeria.',
+  //   'https://www.linkedin.com/in/abdelbasset-meghraoui/',
+  //   '',
+  //   '',
+  //   '',
+  //   '',
+  //   'https://www.survision.io/',
+  // ),
 ];
 
 export default SPEAKERS;
