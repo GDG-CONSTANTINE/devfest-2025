@@ -10,7 +10,7 @@ const SPEAKERS = [
     'https://x.com/amelsellamii',
     '',
     '',
-    'https://samelsamel.github.io/',
+    'https://samelsamel.github.io/'
   ),
   new Speaker(
     'Abdenour Aliane',
@@ -21,7 +21,7 @@ const SPEAKERS = [
     'https://x.com/alabdelouahab',
     '',
     '',
-    'https://aicignaw.com/',
+    'https://aicignaw.com/'
   ),
   // new Speaker(
   //   'Aqsa Kausar',
@@ -43,7 +43,7 @@ const SPEAKERS = [
     'https://x.com/raoufrahiche',
     '',
     '',
-    'https://stackoverflow.com/users/4511702/raouf-rahiche',
+    'https://stackoverflow.com/users/4511702/raouf-rahiche'
   ),
   // new Speaker(
   //   'Abdelbasset MEGHRAOUI',
@@ -56,6 +56,50 @@ const SPEAKERS = [
   //   '',
   //   'https://www.survision.io/',
   // ),
+  new Speaker(
+    'Mohamed BERRIMI',
+    'MohamedBERRIMI.jpg',
+    'AI Engineer and Google Developer Expert pursuing dual PhDs in 3D MRI analysis and Arabic NLP, based in France.',
+    'https://www.linkedin.com/in/mohamed-berrimi-phd-phd-18bb9610b/',
+    '',
+    '',
+    '',
+    '',
+    ''
+  ),
+  new Speaker(
+    'Imane KHOUMS',
+    'ImaneKHOUMS.jpg',
+    'PhD student in AI with a CS background, freelancing in design and web development, based in Algeria.',
+    'https://www.linkedin.com/in/imane-khoums/',
+    '',
+    '',
+    '',
+    '',
+    ''
+  ),
+  new Speaker(
+    'Nadir Saoudi',
+    'NadirSaoudi.png',
+    'Network, DevOps, and Cloud Engineer skilled in Kubernetes, CI/CD, and infrastructure automation, based in Algeria.',
+    'https://www.linkedin.com/in/nadir-saoudi/',
+    '',
+    '',
+    '',
+    '',
+    ''
+  ),
+  new Speaker(
+    'Reda MOUFFOK',
+    'RedaMOUFFOK.png',
+    'Cloud and DevOps engineer with experience in Kubernetes, CI/CD, and cloud infrastructure, based in Algeria.',
+    'https://www.linkedin.com/in/reda-mouffok/',
+    '',
+    '',
+    '',
+    '',
+    ''
+  ),
 ];
 
 export default SPEAKERS;
