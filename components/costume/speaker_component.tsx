@@ -56,7 +56,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
-                className="absolute w-10 h-10 rounded-full overflow-hidden bg-white bottom-5 right-0"
+                className="absolute w-12 h-12 2xl:w-24 2xl:h-24 rounded-full overflow-hidden bg-white bottom-5 right-0"
               >
                 <Image
                   src={`${ICONS_FOLDER_ROOT}${socials[0].name || "default"}.png`}
@@ -66,7 +66,7 @@ export default function SpeakerComponent({ speaker }: { speaker: Speaker }) {
                 />
               </a>
             ) : (
-              <div className="absolute w-10 h-10 rounded-full overflow-hidden bg-white dark:bg-black bottom-5 right-0 items-center justify-center flex border-2 dark:border-gray-300 border-gray-600">
+              <div className="absolute w-12 h-12 2xl:w-24 2xl:h-24 rounded-full overflow-hidden bg-white dark:bg-black bottom-5 right-0 items-center justify-center flex border-2 dark:border-gray-300 border-gray-600">
                 <Megaphone />
               </div>
             )}
