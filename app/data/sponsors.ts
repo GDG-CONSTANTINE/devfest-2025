@@ -11,7 +11,7 @@ const SPONSORS_AND_PARTNERS = [
     'https://www.linkedin.com/company/google/'
   ),
   new Sponsor(
-    '/logo/Tidis Tech.svg',
+    '/logo/TidisTech.svg',
     'partner',
     '',
     'Tidis Tech',
