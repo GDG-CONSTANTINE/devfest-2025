@@ -1,6 +1,6 @@
 import Sponsor from '@/Models/sponsors';
 
-const SPONSORS_AND_PARTNERS = [
+const PARTNERS = [
   new Sponsor(
     '/logo/google.svg',
     'partner',
@@ -48,4 +48,16 @@ const SPONSORS_AND_PARTNERS = [
   ),
 ];
 
-export default SPONSORS_AND_PARTNERS;
+const SPONSORS: Sponsor[] = [
+  // new Sponsor(
+  //   '/logo/sponsors/megafete.svg',
+  //   'gold',
+  //   '',
+  //   'Mega Fête',
+  //   '',
+  //   'https://www.facebook.com/aiesec.constantine.75/',
+  //   'https://www.linkedin.com/company/aiesec/'
+  // ),
+]
+
+export { PARTNERS, SPONSORS };

@@ -8,7 +8,7 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
   const [isPaused, setIsPaused] = useState(false);
   const [itemsPerView, setItemsPerView] = useState(5);
   const [containerWidth, setContainerWidth] = useState(0);
-  const [gapPx, setGapPx] = useState(8);
+  const [gapPx, setGapPx] = useState(16);
   const trackRef = useRef<HTMLDivElement>(null);
   const autoScrollInterval = 3000;
 
@@ -16,7 +16,7 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
     if (width <= 440) return 1; // Mobile
     if (width <= 768) return 2; // Tablet/small laptop
     if (width <= 1024) return 3; // Medium screens
-    return 5; // Desktop/large
+    return 4; // Desktop/large - reduced from 5 to ensure fit
   };
 
   // Update dimensions on mount and resize
@@ -26,10 +26,9 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
         const width = trackRef.current.clientWidth;
         setContainerWidth(width);
 
-        // Get gap from computed style (handles responsive gap classes)
-        const style = window.getComputedStyle(trackRef.current);
-        const computedGap = parseFloat(style.gap);
-        setGapPx(isNaN(computedGap) ? 8 : computedGap);
+        // Set gap based on screen size
+        const newGap = width <= 768 ? 8 : 16;
+        setGapPx(newGap);
 
         const newItemsPerView = getItemsPerView(width);
         setItemsPerView(newItemsPerView);
@@ -47,7 +46,7 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
     return () => window.removeEventListener("resize", updateDimensions);
   }, [currentIndex, speakers.length]);
 
-  const itemWidth = containerWidth > 0 ? containerWidth / itemsPerView : 0;
+  const itemWidth = containerWidth > 0 ? (containerWidth - (gapPx * (itemsPerView - 1))) / itemsPerView : 0;
   const slideWidth = itemWidth + gapPx;
   const maxIndex = Math.max(0, speakers.length - itemsPerView);
 
@@ -77,7 +76,7 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
   };
 
   return (
-    <div className="w-full py-2 px-4 sm:px-8">
+    <div className="w-full py-2 px-4 sm:px-8 overflow-hidden">
       <div
         className="relative"
         onMouseEnter={() => setIsPaused(true)}
@@ -86,9 +85,10 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
         {/* Carousel Container */}
         <div className="overflow-hidden" ref={trackRef}>
           <div
-            className="flex transition-transform duration-300 ease-in-out gap-2 lg:gap-10"
+            className="flex transition-transform duration-300 ease-in-out"
             style={{
               transform: `translateX(-${translateX}px)`,
+              gap: `${gapPx}px`,
             }}
           >
             {speakers.map((speaker, id) => (
@@ -126,8 +126,8 @@ export default function SpeakerCarousel({ speakers }: { speakers: Speaker[] }) {
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               className={`transition-all rounded-full ${idx === currentIndex
-                  ? "bg-black dark:bg-white w-3 h-3 sm:w-4 sm:h-4"
-                  : "w-2 h-2 bg-gray-300"
+                ? "bg-black dark:bg-white w-3 h-3 sm:w-4 sm:h-4"
+                : "w-2 h-2 bg-gray-300"
                 }`}
               aria-label={`Go to slide ${idx + 1}`}
             />

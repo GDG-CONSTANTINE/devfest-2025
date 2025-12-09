@@ -1,7 +1,7 @@
 import SponsorItem from "@/components/costume/sponsors_items";
 import { ArrowRight, Hash } from "lucide-react";
 import { useTheme } from "next-themes";
-import SPONSORS_AND_PARTNERS from "../data/sponsors";
+import { PARTNERS, SPONSORS } from "../data/sponsors";
 
 
 
@@ -26,8 +26,16 @@ export default function SponsorsSection() {
 
             {/* Partners */}
             <div className="w-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-12 py-8">
-                {SPONSORS_AND_PARTNERS.map((partner, index) => {
+                {PARTNERS.map((partner, index) => {
                     return <SponsorItem sponsor={partner} darkMode={theme === 'dark'} key={index} />
+                })}
+            </div>
+            <div>
+                <hr className="border-gray-300 dark:border-gray-600 mx-12" />
+            </div>
+            <div className="w-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-12 py-8">
+                {SPONSORS.map((sponsor, index) => {
+                    return <SponsorItem sponsor={sponsor} darkMode={theme === 'dark'} key={index} />
                 })}
             </div>
         </section>

@@ -54,6 +54,17 @@ const workshops_list = [
       'www.linkedin.com/in/pius-sunday-ojwo'
     )
   ),
+  new WorkShopItem(
+    'Build a Movie Recommendation System from Scratch with Scikit-Learn and K-Means Clustering (Hands-on Workshop)',
+    `In this hands-on workshop, participants will build a fully functional movie recommendation engine using scikit-learn and K-Means clustering—no deep learning required. Using the MovieLens dataset, attendees will transform user ratings into feature vectors, apply K-Means to discover user groups with similar tastes, generate personalized recommendations, and visualize clusters in 2D using PCA. Everything runs live in Google Colab with zero installation needed.`,
+    `Attendees only need basic Python knowledge and will leave with a working recommender system ready to extend or deploy.`,
+    new Speaker(
+      'Necib Taha Abdeerhmane',
+      'TahaNecibi.jpg',
+      '',
+      'https://www.linkedin.com/in/taha-abderrhman-nacib'
+    )
+  ),
 ];
 
 export default workshops_list;
