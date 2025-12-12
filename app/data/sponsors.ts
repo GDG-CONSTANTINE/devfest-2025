@@ -73,7 +73,7 @@ const SPONSORS: Sponsor[] = [
     'https://www.createdz.com/',
     'Create Dz',
     'CREATE is a communication agency specializing in website creation, graphic design and web development in constantine Algeria',
-    "https://www.facebook.com/p/Create-Dz-100076671481585/",
+    'https://www.facebook.com/p/Create-Dz-100076671481585/',
     'https://dz.linkedin.com/in/create-dz-b54085281'
   ),
   new Sponsor(
@@ -82,7 +82,7 @@ const SPONSORS: Sponsor[] = [
     'https://socode.tech/en',
     'SoCode',
     'La première école à Constantine spécialisée dans nouvelles technologie et les métier du numérique.',
-    "https://www.facebook.com/socode.school.dz/",
+    'https://www.facebook.com/socode.school.dz/',
     'https://www.linkedin.com/company/socode-school/'
   ),
   new Sponsor(
@@ -90,19 +90,55 @@ const SPONSORS: Sponsor[] = [
     'bronze',
     'https://nexopizza.com/',
     'Nexo Pizza',
-    'La première école à Constantine spécialisée dans nouvelles technologie et les métier du numérique.',
-    "https://www.facebook.com/nexopizza/",
+    '',
+    'https://www.facebook.com/nexopizza/',
     ''
   ),
-  // new Sponsor(
-  //   '/logo/sponsors/nexo_pizza.png',
-  //   'bronze',
-  //   'https://nexopizza.com/',
-  //   'Miss Chocolata',
-  //   'La première école à Constantine spécialisée dans nouvelles technologie et les métier du numérique.',
-  //   "https://www.facebook.com/nexopizza/",
-  //   ''
-  // ),
-]
+  new Sponsor(
+    '/logo/sponsors/miss_chocolata.png',
+    'bronze',
+    'https://www.instagram.com/miss._chocolata_/',
+    'Miss Chocolata',
+    '',
+    '',
+    ''
+  ),
+  new Sponsor(
+    '/logo/sponsors/tiramisu_house.png',
+    'bronze',
+    'https://www.instagram.com/pastel25_/?g=5',
+    'Tiramisu House',
+    '',
+    '',
+    ''
+  ),
+  new Sponsor(
+    '/logo/sponsors/vermosa_flavors.png',
+    'bronze',
+    'https://www.instagram.com/vermosa_flavors/',
+    'Vermosa_Flavors',
+    '',
+    '',
+    ''
+  ),
+  new Sponsor(
+    '/logo/sponsors/maison_sucree.png',
+    'bronze',
+    'https://www.instagram.com/maison_sucree_sh/',
+    'Maison Sucree',
+    '',
+    '',
+    ''
+  ),
+  new Sponsor(
+    '/logo/sponsors/dolce_mia.png',
+    'bronze',
+    'https://www.instagram.com/dolce.miaaa/',
+    'Dolce Mia',
+    '',
+    '',
+    ''
+  ),
+];
 
 export { PARTNERS, SPONSORS };
