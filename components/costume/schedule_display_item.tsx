@@ -103,8 +103,8 @@ export default function ScheduleDisplayItem({
             .sort((a, b) => Number(a.track || 0) - Number(b.track || 0))
             .map((item, idx) => (
               <div key={idx} className={`flex-1 ${idx > 0 ? 'border-l border-gray-300 dark:border-gray-600 pl-4' : ''}`}>
-                {item.track && item.track !== 'main' && (
-                  <span className="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1 block">
+                  {item.track && item?.track !== 0 && (
+                    <span className="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1 block">
                     {item.track === 1 ? 'Workshop A' : 'Workshop B'}
                   </span>
                 )}
