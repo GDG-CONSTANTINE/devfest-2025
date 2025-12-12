@@ -6,28 +6,28 @@ import SCHEDULE_ITEMS from "../data/schedule";
 import { DAYS } from "../data/settings";
 
 export default function ScheduleSection() {
-  // Organize items by time slots
+  // Organize items by time slots - supporting parallel workshops
   const timeSlots = new Map<
     string,
     {
       start: string;
       end: string;
-      day_one?: ScheduleItem;
-      day_two?: ScheduleItem;
-      day_three?: ScheduleItem;
+      day_one: ScheduleItem[];
+      day_two: ScheduleItem[];
+      day_three: ScheduleItem[];
     }
   >();
 
   SCHEDULE_ITEMS.forEach((item) => {
     const key = `${item.start_time}-${item.end_time}`;
     if (!timeSlots.has(key)) {
-      timeSlots.set(key, { start: item.start_time, end: item.end_time });
+      timeSlots.set(key, { start: item.start_time, end: item.end_time, day_one: [], day_two: [], day_three: [] });
     }
     const slot = timeSlots.get(key)!;
 
-    if (item.day_number === DAYS[0]) slot.day_one = item;
-    else if (item.day_number === DAYS[1]) slot.day_two = item;
-    else if (item.day_number === DAYS[2]) slot.day_three = item;
+    if (item.day_number === DAYS[0]) slot.day_one.push(item);
+    else if (item.day_number === DAYS[1]) slot.day_two.push(item);
+    else if (item.day_number === DAYS[2]) slot.day_three.push(item);
   });
 
   const [currentDay, setCurrentDay] = useState(DAYS[0]);
@@ -109,9 +109,9 @@ export default function ScheduleSection() {
                 <th className="text-lg font-semibold pb-4 text-center">
                   December {DAYS[1]}
                 </th>
-                <th className="text-lg font-semibold pb-4 text-center">
+                {/* <th className="text-lg font-semibold pb-4 text-center">
                   December {DAYS[2]}
-                </th>
+                </th> */}
               </>
             ) : (
               <th className="text-lg font-semibold pb-4 text-center">
@@ -127,9 +127,9 @@ export default function ScheduleSection() {
               time_slot={`${slot.start}-${slot.end}`}
               start_time={slot.start}
               end_time={slot.end}
-              day11_item={slot.day_one}
-              day12_item={slot.day_two}
-              day13_item={slot.day_three}
+              day11_items={slot.day_one}
+              day12_items={slot.day_two}
+              day13_items={slot.day_three}
               current_date={now}
               isSingleDay={isMobile}
               singleDay={isMobile ? currentDay : undefined}

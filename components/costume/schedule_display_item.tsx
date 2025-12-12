@@ -1,12 +1,13 @@
 import ScheduleItem from "@/Models/schedule_item";
+import { DAYS } from "@/app/data/settings";
 
 interface ScheduleDisplayItemInterface {
   time_slot: string;
   start_time: string;
   end_time: string;
-  day11_item?: ScheduleItem;
-  day12_item?: ScheduleItem;
-  day13_item?: ScheduleItem;
+  day11_items: ScheduleItem[];
+  day12_items: ScheduleItem[];
+  day13_items: ScheduleItem[];
   current_date: number;
   isSingleDay?: boolean;
   singleDay?: number;
@@ -15,9 +16,9 @@ interface ScheduleDisplayItemInterface {
 export default function ScheduleDisplayItem({
   start_time,
   end_time,
-  day11_item,
-  day12_item,
-  day13_item,
+  day11_items,
+  day12_items,
+  day13_items,
   current_date,
   isSingleDay = false,
   singleDay,
@@ -38,19 +39,9 @@ export default function ScheduleDisplayItem({
     return currentTime >= startTimeMinutes && currentTime <= endTimeMinutes && item.day_number == currentDay;
   };
 
-  const renderCell = (item?: ScheduleItem) => {
-    const cellClasses = `p-4 bg-gray-200/10 dark:bg-gray-500/40 max-w-0 overflow-hidden ${
-      isCurrentItem(item)
-        ? "border-2 border-dashed border-gray-800/50 dark:border-gray-300/50"
-        : ""
-    }`;
-
-    if (!item) {
-      return <td className={cellClasses}></td>;
-    }
-
+  const renderSingleItem = (item: ScheduleItem) => {
     return (
-      <td className={cellClasses}>
+      <div className="flex-1">
         <h1 className="text-md font-semibold lg:text-lg mb-2 wrap-break-words">
           {item.title}
         </h1>
@@ -80,17 +71,58 @@ export default function ScheduleDisplayItem({
             </div>
           </div>
         )}
+      </div>
+    );
+  };
+
+  const renderCell = (items: ScheduleItem[]) => {
+    const hasCurrentItem = items.some(item => isCurrentItem(item));
+    const cellClasses = `p-4 bg-gray-200/10 dark:bg-gray-500/40 max-w-0 overflow-hidden ${hasCurrentItem
+        ? "border-2 border-dashed border-gray-800/50 dark:border-gray-300/50"
+        : ""
+      }`;
+
+    if (items.length === 0) {
+      return <td className={cellClasses}></td>;
+    }
+
+    // Single item - render normally
+    if (items.length === 1) {
+      return (
+        <td className={cellClasses}>
+          {renderSingleItem(items[0])}
+        </td>
+      );
+    }
+
+    // Multiple items (parallel workshops) - render side by side
+    return (
+      <td className={cellClasses}>
+        <div className="flex gap-4">
+          {items
+            .sort((a, b) => Number(a.track || 0) - Number(b.track || 0))
+            .map((item, idx) => (
+              <div key={idx} className={`flex-1 ${idx > 0 ? 'border-l border-gray-300 dark:border-gray-600 pl-4' : ''}`}>
+                {item.track && item.track !== 'main' && (
+                  <span className="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1 block">
+                    {item.track === 1 ? 'Workshop A' : 'Workshop B'}
+                  </span>
+                )}
+                {renderSingleItem(item)}
+              </div>
+            ))}
+        </div>
       </td>
     );
   };
 
   if (isSingleDay && singleDay) {
-    const item =
-      singleDay === 11
-        ? day11_item
-        : singleDay === 12
-        ? day12_item
-        : day13_item;
+    const items =
+      singleDay === DAYS[0]
+        ? day11_items
+        : singleDay === DAYS[1]
+          ? day12_items
+          : day13_items;
     return (
       <tr className="w-full">
         {/* Time column */}
@@ -102,7 +134,7 @@ export default function ScheduleDisplayItem({
             </span>
           </div>
         </td>
-        {renderCell(item)}
+        {renderCell(items)}
       </tr>
     );
   }
@@ -119,9 +151,9 @@ export default function ScheduleDisplayItem({
         </div>
       </td>
 
-      {renderCell(day11_item)}
-      {renderCell(day12_item)}
-      {renderCell(day13_item)}
+      {renderCell(day11_items)}
+      {renderCell(day12_items)}
+      {renderCell(day13_items)}
     </tr>
   );
 }
